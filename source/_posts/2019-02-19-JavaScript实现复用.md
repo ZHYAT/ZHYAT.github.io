@@ -56,6 +56,7 @@ duck.run()// Donald可以两只腿跑
 - `Object.getPrototypeOf`
 - `Object.sePrototypeOf`
 这三个方法具体如何使用请参阅[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)
+
 用原型实现的继承
 ```js
 let animal = {
