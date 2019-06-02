@@ -4,7 +4,7 @@ date: 2019-03-29T03:32:44.976Z
 tags:
   - 面试 
 categories:
-  - JavaSrcipt
+  - JavaScript
 ---
 
 Q：为什么有的编程规范要求用void 0 代替 undefined?
