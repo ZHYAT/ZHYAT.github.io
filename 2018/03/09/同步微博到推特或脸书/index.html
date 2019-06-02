@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Microsoft YaHei:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|Nova Flat:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="使用说明,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Zhyat Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="同步微博到推特或脸书">
+<meta name="keywords" content="使用说明">
+<meta property="og:type" content="article">
+<meta property="og:title" content="同步微博到推特或脸书">
+<meta property="og:url" content="http://blog.zhyat.cn/2018/03/09/同步微博到推特或脸书/index.html">
+<meta property="og:site_name" content="Zhyat Blog">
+<meta property="og:description" content="同步微博到推特或脸书">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://blog.zhyat.cn/2018/03/09/同步微博到推特或脸书/webhook.gif">
+<meta property="og:image" content="http://blog.zhyat.cn/2018/03/09/同步微博到推特或脸书/%E6%B5%8B%E8%AF%95%E8%BF%90%E8%BD%AC.jpg">
+<meta property="og:updated_time" content="2018-12-09T12:43:08.588Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="同步微博到推特或脸书">
+<meta name="twitter:description" content="同步微博到推特或脸书">
+<meta name="twitter:image" content="http://blog.zhyat.cn/2018/03/09/同步微博到推特或脸书/webhook.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.zhyat.cn/2018/03/09/同步微博到推特或脸书/">
+
+
+
+
+
+  <title>同步微博到推特或脸书 | Zhyat Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhyat Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">学而思之</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhyat.cn/2018/03/09/同步微博到推特或脸书/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhyat">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/24412058?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhyat Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">同步微博到推特或脸书</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T00:00:00+08:00">
+                2018-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/软件/" itemprop="url" rel="index">
+                    <span itemprop="name">软件</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>同步微博到推特或脸书</p>
+<a id="more"></a>
+<h4 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h4><ol>
+<li>在 <a href="https://ifttt.com/" target="_blank" rel="noopener">IFTTT</a> 注册一个帐号</li>
+<li>在 <a href="https://www.integromat.com/" target="_blank" rel="noopener">integromat</a> 注册一个帐号</li>
+</ol>
+<p><em>这两个网站均可以用 Google 或 FB 帐号登录。</em></p>
+<h4 id="在-IFTTT-上添加-“发送新微博的触发”"><a href="#在-IFTTT-上添加-“发送新微博的触发”" class="headerlink" title="在 IFTTT 上添加 “发送新微博的触发”"></a>在 <a href="https://ifttt.com/" target="_blank" rel="noopener">IFTTT</a> 上添加 “发送新微博的触发”</h4><h5 id="连接-Weibo-、Facebook-、Twitter"><a href="#连接-Weibo-、Facebook-、Twitter" class="headerlink" title="连接 Weibo 、Facebook 、Twitter"></a>连接 Weibo 、Facebook 、Twitter</h5><ol>
+<li>在 IFTTT 的主页面，点击 Search</li>
+<li>分别搜索 Weibo 、Facebook 、Twitter</li>
+<li>以 Weibo 为例，搜索框输入 Weibo 之后，点击 Services 下的图标，在弹出的新页面选择授权</li>
+</ol>
+<h5 id="同步原创纯文本微博"><a href="#同步原创纯文本微博" class="headerlink" title="同步原创纯文本微博"></a>同步原创纯文本微博</h5><h6 id="1-Facebook"><a href="#1-Facebook" class="headerlink" title="1. Facebook"></a>1. Facebook</h6><ul>
+<li>点击在右上角用户名下拉框，选择 New Applet</li>
+<li>点击页面上蓝色字  this</li>
+<li>在 Search services 搜索  webhook，依次点击 webhook -> Connect -> Receive a Web request，在 Event Name 中填写 TextWeibo，点击 Creat trigger</li>
+<li>点击页面上蓝色字 that</li>
+<li>在 Search services 搜索  Facebook，依次点击 Facebook -> Creat a status message，Status message 中填写  ，点击  Create action</li>
+<li>点击 Finish</li>
+</ul>
+<h6 id="2-Twitter"><a href="#2-Twitter" class="headerlink" title="2. Twitter"></a>2. Twitter</h6><ul>
+<li>点击在右上角用户名下拉框，选择 New Applet</li>
+<li>点击页面上蓝色字  this</li>
+<li>在 Search services 搜索  webhook，依次点击 webhook -> Connect -> Receive a Web request，在 Event Name 中填写 TextWeibo，点击 Creat trigger</li>
+<li>点击页面上蓝色字 that</li>
+<li>在 Search services 搜索 Twitter，依次点击 Twitter -> Post a tweet，Tweet text 中填写  ，点击  Create action</li>
+<li>点击 Finish</li>
+</ul>
+<h5 id="同步原创带图片微博"><a href="#同步原创带图片微博" class="headerlink" title="同步原创带图片微博"></a>同步原创带图片微博</h5><h6 id="1-Facebook-1"><a href="#1-Facebook-1" class="headerlink" title="1. Facebook"></a>1. Facebook</h6><ul>
+<li>点击在右上角用户名下拉框，选择 New Applet</li>
+<li>点击页面上蓝色字  this</li>
+<li>在 Search services 搜索  webhook，依次点击 webhook -> Connect -> Receive a Web request，在 Event Name 中填写 ImageWeibo，点击 Creat trigger</li>
+<li>点击页面上蓝色字 that</li>
+<li>在 Search services 搜索  Facebook，依次点击 Facebook -> Upload a photo from URL，Message 中填写  ，Photo Url 中填写  ，点击  Create action</li>
+<li>点击 Finish</li>
+</ul>
+<h6 id="2-Twitter-1"><a href="#2-Twitter-1" class="headerlink" title="2. Twitter"></a>2. Twitter</h6><ul>
+<li><p>点击在右上角用户名下拉框，选择 New Applet</p>
+</li>
+<li><p>点击页面上蓝色字  this</p>
+</li>
+<li><p>在 Search services 搜索  webhook，依次点击 webhook -> Connect -> Receive a Web request，在 Event Name 中填写 TextWeibo，点击 Creat trigger</p>
+</li>
+<li><p>点击页面上蓝色字 that</p>
+</li>
+<li><p>在 Search services 搜索  Twitter，依次点击 Twitter -> Post a tweet with image</p>
+</li>
+</ul>
+<p>，Tweet text 中填写  ，Image URL 填写  ，点击  Create action</p>
+<ul>
+<li>点击 Finish</li>
+</ul>
+<h5 id="webhook-的触发地址"><a href="#webhook-的触发地址" class="headerlink" title="webhook 的触发地址"></a>webhook 的触发地址</h5><ul>
+<li>点击在右上角用户名下拉框，选择 Services</li>
+<li>搜索 Webhooks</li>
+<li>点击 Documentation</li>
+<li>将 Key 记下来</li>
+</ul>
+<p><em>因为 IFTTT 发送带图片和不带图片是不同的方式，所以必须设置两个 IFTTT 的 APPLET</em></p>
+<h4 id="通过-integromat-将两条规则分发"><a href="#通过-integromat-将两条规则分发" class="headerlink" title="通过 integromat 将两条规则分发"></a>通过 <a href="https://www.integromat.com/" target="_blank" rel="noopener">integromat</a> 将两条规则分发</h4><h5 id="1-设置-webhook"><a href="#1-设置-webhook" class="headerlink" title="1. 设置 webhook"></a>1. 设置 webhook</h5><ul>
+<li>选择 Create a new scenario</li>
+</ul>
+<ul>
+<li>点击？号图标，搜索 webhook</li>
+<li>依次选择 webhooks -> Custom Webhook</li>
+<li>点击 Webhooks 的图标，点击下拉框旁的 Add</li>
+<li>Webhook name 填写 IFTTT weibo webhook</li>
+<li>点击左下角的 Show advanced settings</li>
+<li>Data structure 右侧点击 Add</li>
+<li>Data Structure name 填写 Weibo data structure</li>
+<li>点击 Generator</li>
+<li>Content type 选择 Query String</li>
+<li>Sample data 填写：text=text&amp;image=imageUrl</li>
+<li>点击 Save , 点击 Add data structure 表单的 Save，点击 Add a hook 表单的 Save</li>
+</ul>
+<p><img src="//blog.zhyat.cn/2018/03/09/同步微博到推特或脸书/webhook.gif" alt="webhook"></p>
+<h5 id="2-测试是否正常工作"><a href="#2-测试是否正常工作" class="headerlink" title="2. 测试是否正常工作"></a>2. 测试是否正常工作</h5><ul>
+<li>复制 Webhooks 表单中给出的 URL</li>
+<li>在这个 URL 后面拼接 ?text=text&amp;image=imageUrl</li>
+<li>在浏览器地址栏中粘贴</li>
+<li>若 Webhooks 表单给出 Successfuly determined 表示成功运转</li>
+<li>然后将 Webhooks 表单中给出的 URL 记录下来</li>
+</ul>
+<p><img src="//blog.zhyat.cn/2018/03/09/同步微博到推特或脸书/%E6%B5%8B%E8%AF%95%E8%BF%90%E8%BD%AC.jpg" alt="测试运转"></p>
+<h5 id="3-设置-Router"><a href="#3-设置-Router" class="headerlink" title="3. 设置 Router"></a>3. 设置 Router</h5><ul>
+<li><p>点 webhook 图标右边的半圆，选择 Router</p>
+</li>
+<li><p>设置第一条</p>
+<ul>
+<li>点第一条分支的虚线中间部分，点击 set up a filter</li>
+<li>Lable 填 Image weibo，Condition 输入框选左边的 image，下拉框选择 exists，点击 ok</li>
+<li>点击这条分支的末端图标问号，搜索 HTTP</li>
+<li>点击 HTTP，选择 Make a request</li>
+<li>在 <a href="https://maker.ifttt.com/trigger/imageWeibo/with/key/" target="_blank" rel="noopener">https://maker.ifttt.com/trigger/imageWeibo/with/key/</a> 后加上在 IFTTT 步骤记录下来的 Key</li>
+<li>Method 选择 POST，Body Type 选择 application/x-www-form-urlencode</li>
+<li>点击 Add item，Key 填 value1，点击 value 的输入框，选择 text</li>
+<li>点击 Add item，key 填写 value2，点击 value 的输入框，选择 image</li>
+<li>点击 ok</li>
+</ul>
+</li>
+<li><p>设置第二条</p>
+<ul>
+<li>点第二条分支的虚线中间部分，点击 set up a filter</li>
+<li>Lable 填 Text weibo，Condition 输入框选左边的 image，下拉框选择 Does not exist </li>
+<li>点击右下角 Add and rule，点击输入框，选择 text，下拉框选择 Dose not matches Pattern (case insensitive)，下面的输入框输入 (Repost)|(转发微博）|(\/\/)|( 轉發微博，点击 ok</li>
+<li>点击这条分支的末端图标问号，搜索 HTTP</li>
+<li>点击 HTTP，选择 Make a request</li>
+<li>在 <a href="https://maker.ifttt.com/trigger/imageWeibo/with/key/" target="_blank" rel="noopener">https://maker.ifttt.com/trigger/imageWeibo/with/key/</a> 后加上在 IFTTT 步骤记录下来的 Key</li>
+<li>Method 选择 POST，Body Type 选择 application/x-www-form-urlencode</li>
+<li>点击 Add item，Key 填 value1，点击 value 的输入框，选择 text</li>
+<li>点击 ok</li>
+</ul>
+<p>上述步骤完成后，点击右下角保存，并确定此 scenarios 正在运行</p>
+</li>
+</ul>
+<h4 id="在-IFTTT-中创建触发器"><a href="#在-IFTTT-中创建触发器" class="headerlink" title="在 IFTTT 中创建触发器"></a>在 IFTTT 中创建触发器</h4><ul>
+<li>点击页面上蓝色字  this</li>
+<li>在 Search services 搜索  weibo，选择 New post by you，点击 Creat trigger</li>
+<li>点击页面上蓝色字 that</li>
+<li>在 Search services 搜索 webhook，选择 Make a Web request，在 URL 中填写在 integromat Webhooks 表单中拿到的 URL，点击  Create action</li>
+<li>点击 Finish</li>
+</ul>
+<p>然后就可以同步微博上的原创微博了</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/使用说明/" rel="tag"># 使用说明</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/19/Tvtk管线与数据加载/" rel="next" title="Python 科学计算可视化--管线与数据加载">
+                <i class="fa fa-chevron-left"></i> Python 科学计算可视化--管线与数据加载
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/04/移动端滑动事件/" rel="prev" title="移动端滑动事件">
+                移动端滑动事件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars0.githubusercontent.com/u/24412058?s=460&v=4" alt="zhyat">
+            
+              <p class="site-author-name" itemprop="name">zhyat</p>
+              <p class="site-description motion-element" itemprop="description">此时，此地，此身</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zhyat" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:zhyat@outlook.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前期准备"><span class="nav-number">1.</span> <span class="nav-text">前期准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在-IFTTT-上添加-“发送新微博的触发”"><span class="nav-number">2.</span> <span class="nav-text">在 IFTTT 上添加 “发送新微博的触发”</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#连接-Weibo-、Facebook-、Twitter"><span class="nav-number">2.1.</span> <span class="nav-text">连接 Weibo 、Facebook 、Twitter</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#同步原创纯文本微博"><span class="nav-number">2.2.</span> <span class="nav-text">同步原创纯文本微博</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-Facebook"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. Facebook</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-Twitter"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. Twitter</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#同步原创带图片微博"><span class="nav-number">2.3.</span> <span class="nav-text">同步原创带图片微博</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-Facebook-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">1. Facebook</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-Twitter-1"><span class="nav-number">2.3.2.</span> <span class="nav-text">2. Twitter</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#webhook-的触发地址"><span class="nav-number">2.4.</span> <span class="nav-text">webhook 的触发地址</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过-integromat-将两条规则分发"><span class="nav-number">3.</span> <span class="nav-text">通过 integromat 将两条规则分发</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-设置-webhook"><span class="nav-number">3.1.</span> <span class="nav-text">1. 设置 webhook</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-测试是否正常工作"><span class="nav-number">3.2.</span> <span class="nav-text">2. 测试是否正常工作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-设置-Router"><span class="nav-number">3.3.</span> <span class="nav-text">3. 设置 Router</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在-IFTTT-中创建触发器"><span class="nav-number">4.</span> <span class="nav-text">在 IFTTT 中创建触发器</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhyat</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
