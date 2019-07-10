@@ -433,21 +433,15 @@
       
         
           
-            <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>Symbol 的用法其实很简单，就是创建一个独一无二的值。<br>举个例子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Symbol</span>() == <span class="built_in">Symbol</span>() <span class="comment">// false</span></span><br></pre></td></tr></table></figure></p>
-<img src="/2019/06/02/ES6-Symbol/Symbol_not_equal.png" title="Symbol()之间不相等">
-<p>需要注意的是，不能使用 <code>new</code> 创建 <code>Symbol</code> ，因为 <code>Symbol</code> 是一个基本类型。</p>
-<p>通常在使用 <code>Symbol</code> 的时候，会在其中加入标识符，例如：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Symbol</span>(<span class="string">'foo'</span>) <span class="comment">// Symbol(foo)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Symbol</span>(<span class="string">'foo'</span>) == <span class="built_in">Symbol</span>(<span class="string">'foo'</span>) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Symbol</span>(<span class="string">'foo'</span>).toString() <span class="comment">// "Symbol(foo)"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Symbol</span>(<span class="string">'foo'</span>).toString() === <span class="built_in">Symbol</span>(<span class="string">'foo'</span>).toString() <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<img src="/2019/06/02/ES6-Symbol/Symbol_exp1.png" title="Symbol()的一些情况">
-<p><code>Symbol</code> 有 <code>toString()</code> 方法</p>
-<h2 id="主要使用场景"><a href="#主要使用场景" class="headerlink" title="主要使用场景"></a>主要使用场景</h2><h3 id="作为对象的属性名"><a href="#作为对象的属性名" class="headerlink" title="作为对象的属性名"></a>作为对象的属性名</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> o = &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> mySymbol = <span class="built_in">Symbol</span>()</span><br><span class="line"></span><br><span class="line">o[mySymbol] = <span class="string">'xxx'</span></span><br></pre></td></tr></table></figure>
-<p>需要注意的是，使用 <code>Symbol</code> 作为属性名时，要用 <code>[]</code> 的方式访问，因为点符号后面跟的只能时字符串。</p>
-<h3 id="定义常量"><a href="#定义常量" class="headerlink" title="定义常量"></a>定义常量</h3><p>保证这些常量不相等<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> log = &#123;&#125;</span><br><span class="line">log.levels = &#123;</span><br><span class="line">  DEBUG: <span class="built_in">Symbol</span>(<span class="string">'debug'</span>),</span><br><span class="line">  INFO: <span class="built_in">Symbol</span>(<span class="string">'info'</span>),</span><br><span class="line">  WARN: <span class="built_in">Symbol</span>(<span class="string">'warn'</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(log.levels.DEBUG, <span class="string">'debug message'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(log.levels.INFO, <span class="string">'info message'</span>)</span><br></pre></td></tr></table></figure></p>
-<h3 id="保证-Switch-按照设计使用"><a href="#保证-Switch-按照设计使用" class="headerlink" title="保证 Switch 按照设计使用"></a>保证 Switch 按照设计使用</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> COLOR_RED    = <span class="built_in">Symbol</span>();</span><br><span class="line"><span class="keyword">const</span> COLOR_GREEN  = <span class="built_in">Symbol</span>();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getComplement</span>(<span class="params">color</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (color) &#123;</span><br><span class="line">    <span class="keyword">case</span> COLOR_RED:</span><br><span class="line">      <span class="keyword">return</span> COLOR_GREEN;</span><br><span class="line">    <span class="keyword">case</span> COLOR_GREEN:</span><br><span class="line">      <span class="keyword">return</span> COLOR_RED;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Undefined color'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>Symbol 还有一些其他方法，请参阅读<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol" target="_blank" rel="noopener">MDN Web Docs</a></p>
-<p>不过需要特别注意的是，Symbol 定义的属性名，在使用 <code>for...in</code> 、<code>for...of</code> 等需要有迭代器的方法时不会出现，要获得一个对象所有的<code>Symbol</code> 属性名可以使用 <code>Object.getOwnPropertySymbols()</code> 方法。</p>
-
           
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/06/02/ES6-Symbol/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -587,32 +581,15 @@
       
         
           
-            <p>JavaScript 中的 this 可能是 JS 这门语言中最难的一个关键字，想要去理解 this 运作的原理对 JS 需要一定的使用经验。本文并不深究 this 为什么指向某个地方，本文是一篇方法论的文章，只说明怎么样判断 this 的指向。</p>
-<h3 id="误区"><a href="#误区" class="headerlink" title="误区"></a>误区</h3><ol>
-<li>this 指向自身 ❌</li>
-<li>this 指向函数的作用域 ❌</li>
-</ol>
-<h3 id="正确的说法"><a href="#正确的说法" class="headerlink" title="正确的说法"></a>正确的说法</h3><blockquote>
-<p>this 实际上是发生在函数调用时候的绑定，它指向什么完全取决于函数在哪里调用</p>
-</blockquote>
-<p>看得明明白白，好像自己真的懂了是不是？呵呵，不可能的。</p>
-<h3 id="绑定的几条规则"><a href="#绑定的几条规则" class="headerlink" title="绑定的几条规则"></a>绑定的几条规则</h3><h4 id="默认绑定"><a href="#默认绑定" class="headerlink" title="默认绑定"></a>默认绑定</h4><p>独立函数调用。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( <span class="keyword">this</span>.a )</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line">f() <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-<p>f()没有加任何的修饰的函数引用，所以此函数不可能使用其他规则，进而 this 此时指向的就是全局对象。不过需要注意的是，在严格模式中，this 是不可以绑定到全局对象上的。</p>
-<p>这条规则就是，别的规则都不生效，那就是这条规则。</p>
-<h4 id="隐式绑定"><a href="#隐式绑定" class="headerlink" title="隐式绑定"></a>隐式绑定</h4><p>当调用位置有上下文对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( <span class="keyword">this</span>.a )</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">  a:<span class="number">1</span>,</span><br><span class="line">  foo: foo</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">o.foo() <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-<p>但是这条规则有几个需要注意的场景：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( <span class="keyword">this</span>.a )</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">  a:<span class="number">1</span>,</span><br><span class="line">  foo: foo</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fCopy = o.foo <span class="comment">// 别名</span></span><br><span class="line">fCopy() <span class="comment">// TypeError: this is undefined</span></span><br></pre></td></tr></table></figure>
-<p>为什么会出现这种情况呢？因为实际上<code>fCopy</code> 是 <code>foo</code> 的引用, 是一个没有修饰符，即没有上下文对象的函数调用。</p>
-<h4 id="显示绑定"><a href="#显示绑定" class="headerlink" title="显示绑定"></a>显示绑定</h4><p>使用 <code>call</code> 和 <code>apply()</code> 方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( <span class="keyword">this</span>.a )</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> o = &#123; <span class="attr">a</span>: <span class="number">1</span>&#125;</span><br><span class="line"></span><br><span class="line">f.call(o)</span><br></pre></td></tr></table></figure></p>
-<p>这个很明显了，就是手动的明确的，将f的this指向绑定到o上。</p>
-<h4 id="new-绑定"><a href="#new-绑定" class="headerlink" title="new 绑定"></a>new 绑定</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">F</span> (<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.a = a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> F(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">f.a <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-<p>js 的 new 实际上不是面向对象如java那种创建一个对象的实例，它是基于原型关系的。</p>
-<p>先创建了一个对象，然后连接到到原型上。关于这一块，可以参考 JavaScript 实现复用那篇文章。</p>
-<h3 id="优先级别"><a href="#优先级别" class="headerlink" title="优先级别"></a>优先级别</h3><p>new &gt; 显示绑定 &gt; 隐式绑定 &gt; 默认绑定</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><img src="/2019/05/27/JavaScript中判断this指向的一些方法/this_flow.png" title="this指向的流程图">
           
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/27/JavaScript中判断this指向的一些方法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -752,44 +729,15 @@
       
         
           
-            <p><strong>来自<a href="https://github.com/Advanced-Frontend/Daily-Interview-Question" target="_blank" rel="noopener">Daily-Interview-Question</a></strong></p>
-<p>Q：介绍 HTTPS 握手过程</p>
-<ol>
-<li>Client Hello</li>
-<li>Server Hello</li>
-<li>Certificate</li>
-<li>Server Hello Done</li>
-<li>Client Key Exchange</li>
-<li>Change Cipher Spec</li>
-<li>Finished</li>
-<li>Change Cipher Spec</li>
-<li>Finished</li>
-</ol>
-<h3 id="步骤一：客户端发送请求（Client-Hello）"><a href="#步骤一：客户端发送请求（Client-Hello）" class="headerlink" title="步骤一：客户端发送请求（Client Hello）"></a>步骤一：客户端发送请求（Client Hello）</h3><p>首先，客户端向服务端提供加密信息的通信。</p>
-<ol>
-<li>客户端支持的SSL的指定版本</li>
-<li>客户端产生的随机数（Client Random, 稍后用于生成”对话密钥”</li>
-<li>客户端支持的加密算法</li>
-</ol>
-<h3 id="步骤二：服务器回应（Sever-Hello）"><a href="#步骤二：服务器回应（Sever-Hello）" class="headerlink" title="步骤二：服务器回应（Sever Hello）"></a>步骤二：服务器回应（Sever Hello）</h3><p>服务端收到请求，向客户端发出回应</p>
-<ol>
-<li>确认使用的加密通信协议版本，比如TLS 1.0版本。如果浏览器与服务器支持的版本不一致，服务器关闭加密通信。</li>
-<li>一个服务器生成的随机数(Server Random)，稍后用于生成”对话密钥”。</li>
-<li>确认使用的加密方法，比如RSA公钥加密。</li>
-<li>服务器证书</li>
-</ol>
-<p><em>第一次握手结束</em></p>
-<h3 id="步骤三：发送验证消息"><a href="#步骤三：发送验证消息" class="headerlink" title="步骤三：发送验证消息"></a>步骤三：发送验证消息</h3><p>SSL服务器将数字证书通过Certificate消息发送给SSL客户端，证书里面包含了网站地址，加密公钥，以及证书的颁发机构。</p>
-<h3 id="步骤四：服务器回应结束"><a href="#步骤四：服务器回应结束" class="headerlink" title="步骤四：服务器回应结束"></a>步骤四：服务器回应结束</h3><p>SSL服务器发送Server Hello Done消息，通知SSL客户端版本和加密套件协商结束，开始进行密钥交换。</p>
-<h3 id="步骤五："><a href="#步骤五：" class="headerlink" title="步骤五："></a>步骤五：</h3><p>SSL客户端验证SSL服务器的证书合法后，如果不合法浏览器会提示。如果合法的话，利用证书中的公钥，SSL客户端随机生成的premaster secret（后续加密数据所需要的对称密钥），并通过Client Key Exchange消息发送给SSL服务器。</p>
-<p><em>第二次握手结束</em></p>
-<h3 id="步骤六："><a href="#步骤六：" class="headerlink" title="步骤六："></a>步骤六：</h3><p>SSL客户端发送Change Cipher Spec消息，通知SSL服务器后续报文将采用协商好的密钥和加密套件进行加密和MAC计算。</p>
-<h3 id="步骤七："><a href="#步骤七：" class="headerlink" title="步骤七："></a>步骤七：</h3><p>SSL客户端计算已交互的握手消息（除Change Cipher Spec消息外所有已交互的消息）的Hash值，利用协商好的密钥和加密套件处理Hash值（计算并添加MAC值、加密等），并通过Finished消息发送给SSL服务器。SSL服务器利用同样的方法计算已交互的握手消息的Hash值，并与Finished消息的解密结果比较，如果二者相同，且MAC值验证成功，则证明密钥和加密套件协商成功。</p>
-<h3 id="步骤八："><a href="#步骤八：" class="headerlink" title="步骤八："></a>步骤八：</h3><p>同样地，SSL服务器发送Change Cipher Spec消息，通知SSL客户端后续报文将采用协商好的密钥和加密套件进行加密和MAC计算。</p>
-<h3 id="步骤九："><a href="#步骤九：" class="headerlink" title="步骤九："></a>步骤九：</h3><p>SSL服务器计算已交互的握手消息的Hash值，利用协商好的密钥和加密套件处理Hash值（计算并添加MAC值、加密等），并通过Finished消息发送给SSL客户端。SSL客户端利用同样的方法计算已交互的握手消息的Hash值，并与Finished消息的解密结果比较，如果二者相同，且MAC值验证成功，则证明密钥和加密套件协商成功。</p>
-<p><em>第三次握手结束</em></p>
-
           
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/29/每日一道大厂题-HTTPS握手/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -929,15 +877,15 @@
       
         
           
-            <p>Q：为什么有的编程规范要求用void 0 代替 undefined?<br>A: undefined 是一个全局变量，可以被修改。为了准备的表达“未定义”，所以使用void 0</p>
-<p>Q：underfined 与 null 的区别？<br>A：underfined 是Underfined类型的一个值，是一个名为underfined的变量，表达的意思是“从未赋值”“从未定义”，而null是Nulll类型的一个值，是JavaSript语言的关键字，表达的意思是“定义了但是为空”</p>
-<p>Q：0.1+0.2 不能 = 0.3？怎么比较浮点数？<br>A：Math.abs(0.1 + 0.2 - 0.3) &lt;= Number.EPSILON，浮点数的特性决定了等式两边相差了微小的值，应该比较等式两边之差是否小于最小精度值</p>
-<p>Q：为什么parseInt推荐传入第二个参数？<br>A：在不传入第二个参数的时候，parseInt默认转换0x开头的16进制，还支持0开头的八进制，所以推荐在任何时候都传入第二个参数。parseFloat则直接把字符串作为十进制解析。多数情况下，Number是比parseInt和parseFloat更好的选择。</p>
-<p>Q：instanceof、typeof 和 Object.prototype.toString的区别？<br>Q：[‘1’,’2’,’3’].map(parseInt)的结果？</p>
-<p>Q: 一个页面如果有一万个Bottom如何绑定事件？<br>A：事件委托，绑定父节点<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.list'</span>).on(<span class="string">'click'</span>, <span class="string">'li'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123; <span class="comment">// 绑定事件到父节点</span></span><br><span class="line">    <span class="built_in">console</span>.log($(event.target).html()); <span class="comment">// 注意操作对象是event.target还是this，下面会有详细说明哦</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(<span class="string">'.list'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (event.target.tagName === <span class="string">'LI'</span>) &#123; <span class="comment">// 判断标签是不是li，注意tagName属性返回的是大写</span></span><br><span class="line">        <span class="built_in">console</span>.log($(event.target).html());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>Q: 我们现在要实现一个红绿灯，把一个圆形 div 绿色 3 秒，黄色 1 秒，红色 2 秒循环改变背景色<br>A:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">duration</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>)</span>&#123;</span><br><span class="line">        setTimeout(resolve, duration);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">changeColor</span>(<span class="params">duration,color</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"traffic-light"</span>).style.background = color;</span><br><span class="line">    <span class="keyword">await</span> sleep(duration);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">await</span> changeColor(<span class="number">3000</span>,<span class="string">"green"</span>);</span><br><span class="line">        <span class="keyword">await</span> changeColor(<span class="number">1000</span>, <span class="string">"yellow"</span>);</span><br><span class="line">        <span class="keyword">await</span> changeColor(<span class="number">2000</span>, <span class="string">"red"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">main()</span><br></pre></td></tr></table></figure></p>
-
           
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/29/JavaScript问答/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1077,28 +1025,15 @@
       
         
           
-            <h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><h3 id="大O表示法"><a href="#大O表示法" class="headerlink" title="大O表示法"></a>大O表示法</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cal</span><span class="params">(<span class="keyword">int</span> n)</span> </span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;    </span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>;    </span><br><span class="line">    <span class="keyword">for</span> (; i &lt;= n; ++i) &#123;      </span><br><span class="line">        sum = sum + i;    </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>一行代码执行的时间为unit_time<br>第4行第5行分别执行了n遍，所以是 2*n unit_time</p>
-<p>T(n) = O(f(n))<br>T(n)表示代码执行的时间；n表示数据规模的大小；f(n)表示每行代码执行的次数总和。因为这是一个公式，所以用f(n)来表示。公式中的O，表示代码的执行时间T(n)与f(n)表达式成正比。</p>
-<h3 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h3><ol>
-<li>只关注执行次数最多的一段代码</li>
-<li>加法法则：总复杂度等于量级最大的那段代码的复杂度</li>
-<li>乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积</li>
-</ol>
-<h3 id="最好、最坏时间复杂度"><a href="#最好、最坏时间复杂度" class="headerlink" title="最好、最坏时间复杂度"></a>最好、最坏时间复杂度</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span>[] <span class="built_in">array</span>, <span class="keyword">int</span> n, <span class="keyword">int</span> x)</span> </span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;   </span><br><span class="line">    <span class="keyword">int</span> pos = <span class="number">-1</span>;   </span><br><span class="line">    <span class="keyword">for</span> (; i &lt; n; ++i) </span><br><span class="line">    &#123;     </span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">array</span>[i] == x) </span><br><span class="line">        pos = i;   </span><br><span class="line">    &#125;   </span><br><span class="line">    <span class="keyword">return</span> pos; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>代码中时间度复杂度会因为x在不在数组中变化，如果x在数组中则O(n)=1,否则O(n)=n。</p>
-<h3 id="平均时间复杂度"><a href="#平均时间复杂度" class="headerlink" title="平均时间复杂度"></a>平均时间复杂度</h3><p>要查找的变量x在数组中的位置，有n+1种情况：在数组的0～n-1位置中和不在数组中。我们把每种情况下，查找需要遍历的元素个数累加起来，然后再除以n+1，就可以得到需要遍历的元素个数的平均值：</p>
-<p>$$<br>\frac{1+2+3+\cdots+n+n}{n+1}=\frac{n(n+3)}{2(n+1)}<br>$$</p>
-<p>考虑到在数组里和不在数组里的概率，以及出现在每个位置的概率，实际上应该是<br>$$<br>\begin{aligned} &amp; 1 \times \frac{1}{2 n}+2 \times \frac{1}{2 n}+3 \times \frac{1}{2 n}+\dots+n \times \frac{1}{2 n}+n \times \frac{1}{2}\ = &amp;\frac{3 n+1}{4} \end{aligned}<br>$$</p>
-<p>用大O表示法来表示，去掉系数和常量，这段代码的加权平均时间复杂度仍然是O(n)。</p>
-<h3 id="均摊时间复杂度"><a href="#均摊时间复杂度" class="headerlink" title="均摊时间复杂度"></a>均摊时间复杂度</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// array表示一个长度为n的数组 </span></span><br><span class="line"><span class="comment">// 代码中的array.length就等于n  </span></span><br><span class="line"><span class="keyword">int</span>[] <span class="built_in">array</span> = <span class="keyword">new</span> <span class="keyword">int</span>[n];  </span><br><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;   </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> val)</span> </span></span><br><span class="line"><span class="function"></span>&#123;     </span><br><span class="line">    <span class="keyword">if</span> (count == <span class="built_in">array</span>.length) </span><br><span class="line">    &#123;        </span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">array</span>.length; ++i) </span><br><span class="line">        &#123;           </span><br><span class="line">            sum = sum + <span class="built_in">array</span>[i];        </span><br><span class="line">        &#125;        </span><br><span class="line">        <span class="built_in">array</span>[<span class="number">0</span>] = sum;        </span><br><span class="line">        count = <span class="number">1</span>;     </span><br><span class="line">    &#125;     </span><br><span class="line">    <span class="built_in">array</span>[count] = val;     </span><br><span class="line">    ++count;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>$$<br>1 \times \frac{1}{n+1}+1 \times \frac{1}{n+1}+\dots+1 \times \frac{1}{n+1}+n \times \frac{1}{n+1}=O(1)<br>$$</p>
-<p>每一次O(n)的插入操作，都会跟着n-1次O(1)的插入操作，所以把耗时多的那次操作均摊到接下来的n-1次耗时少的操作上，均摊下来，这一组连续的操作的均摊时间复杂度就是O(1)。</p>
-<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局变量，大小为10的数组array，长度len，下标i。</span></span><br><span class="line"><span class="keyword">int</span> <span class="built_in">array</span>[] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>]; </span><br><span class="line"><span class="keyword">int</span> len = <span class="number">10</span>; </span><br><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>; </span><br><span class="line"><span class="comment">// 往数组中添加一个元素</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> element)</span> </span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">    <span class="keyword">if</span> (i &gt;= len) <span class="comment">// 数组空间不够了 重新申请一个2倍大小的数组空间</span></span><br><span class="line">    &#123;          </span><br><span class="line">        <span class="keyword">int</span> new_array[] = <span class="keyword">new</span> <span class="keyword">int</span>[len*<span class="number">2</span>];      </span><br><span class="line">        <span class="comment">// 把原来array数组中的数据依次copy到new_array      </span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; ++j) </span><br><span class="line">        &#123;        </span><br><span class="line">            new_array[j] = <span class="built_in">array</span>[j];      </span><br><span class="line">        &#125;      </span><br><span class="line">        <span class="comment">// new_array复制给array，array现在大小就是2倍len了     </span></span><br><span class="line">        <span class="built_in">array</span> = new_array;      </span><br><span class="line">        len = <span class="number">2</span> * len;    </span><br><span class="line">    &#125;    <span class="comment">// 将element放到下标为i的位置，下标i加一   </span></span><br><span class="line">    <span class="built_in">array</span>[i] = element;   </span><br><span class="line">    ++i; </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>时间复杂度：<br>   最好：O(1)<br>   最坏：O(n)<br>   均摊：O(1) 因为前N个操作都是O(1),最后一个均摊到前n个</p>
-<p>空间复杂度：<br>   最好：O(1)<br>   最坏：O(n)</p>
-
           
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/28/复杂度分析/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1249,17 +1184,15 @@
       
         
           
-            <p>在实现面向对象的编程中，有两种不同的描述对象的方式。一是以Java、C++为代表的基于类的编程语言，二是以JavaScript为代表的基于原型的编程语言。<br>基于“类”关心分类与类，基于“原型”则更关心对象实例。基于“类”的语言总是先有类，然后再去实例化一个对象，类与类之间可以形成继承、组合等关系。但基于”原型“的语言是通过“复制”来创建新的对象。<br>为了使JavaScript更接近基于“类”的实现方式，社区里曾有过不少接近于类Java的风格方言。但在ES6出现后，<code>class</code>已经成为一个关键字，不需要模拟即可实现“类”，但实际上这个“类”还是基于原型对象之上的。</p>
-<p>利用class实现继承<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> (name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  run() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>可以跑`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="keyword">super</span>(name)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  run()&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>可以四肢腿跑`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Duck</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="keyword">super</span>(name)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  run()&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>可以两只腿跑`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> cat = <span class="keyword">new</span> Cat(<span class="string">'Tom'</span>)</span><br><span class="line"><span class="keyword">let</span> duck = <span class="keyword">new</span> Duck(<span class="string">'Donald'</span>)</span><br><span class="line"></span><br><span class="line">cat.run() <span class="comment">// Tom可以四肢腿跑</span></span><br><span class="line">duck.run()<span class="comment">// Donald可以两只腿跑</span></span><br></pre></td></tr></table></figure></p>
-<p>当然，ES6在操作对象上也提供了几个方法，使得基于原型的思想也同样可以实现继承。提供的方法如下：</p>
-<ul>
-<li><code>Object.create</code></li>
-<li><code>Object.getPrototypeOf</code></li>
-<li><code>Object.sePrototypeOf</code><br>这三个方法具体如何使用请参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" rel="noopener">MDN</a></li>
-</ul>
-<p>用原型实现的继承<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> animal = &#123;</span><br><span class="line">  run()&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'我可以跑'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> cat = <span class="built_in">Object</span>.create(animal,&#123;</span><br><span class="line">  say()&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'我是cat'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> duck = <span class="built_in">Object</span>.create(animal,&#123;</span><br><span class="line">  say()&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'我是duck'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> someCat = <span class="built_in">Object</span>.create(cat)</span><br><span class="line"><span class="keyword">let</span> someDuck = <span class="built_in">Object</span>.create(duck)</span><br><span class="line"></span><br><span class="line">someCat.say()</span><br><span class="line">someDuck.say()</span><br></pre></td></tr></table></figure></p>
-
           
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/19/JavaScript实现复用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
