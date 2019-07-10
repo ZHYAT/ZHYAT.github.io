@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[2019-07-10-字体对应的字重]]></title>
+    <url>%2F2019%2F07%2F10%2F%E5%AD%97%E4%BD%93%E5%AF%B9%E5%BA%94%E7%9A%84%E5%AD%97%E9%87%8D%2F</url>
+    <content type="text"><![CDATA[设计师给的标注文件经常会出现一个情况，字重总是通过直接设置具体的字体来指定字重，实际上在font-family那一行Medium指的是字重。 其对应关系大致符合：100 - Thin200 - Extra Light (Ultra Light)300 - Light400 - Regular (Normal、Book、Roman)500 - Medium600 - Semi Bold (Demi Bold)700 - Bold800 - Extra Bold (Ultra Bold)900 - Black (Heavy)]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ES6 之 Symbol]]></title>
     <url>%2F2019%2F06%2F02%2FES6-Symbol%2F</url>
     <content type="text"><![CDATA[基本概念Symbol 的用法其实很简单，就是创建一个独一无二的值。举个例子：1Symbol() == Symbol() // false 需要注意的是，不能使用 new 创建 Symbol ，因为 Symbol 是一个基本类型。 通常在使用 Symbol 的时候，会在其中加入标识符，例如： 1234567Symbol('foo') // Symbol(foo)Symbol('foo') == Symbol('foo') // falseSymbol('foo').toString() // "Symbol(foo)"Symbol('foo').toString() === Symbol('foo').toString() // true Symbol 有 toString() 方法 主要使用场景作为对象的属性名1234let o = &#123;&#125;let mySymbol = Symbol()o[mySymbol] = 'xxx' 需要注意的是，使用 Symbol 作为属性名时，要用 [] 的方式访问，因为点符号后面跟的只能时字符串。 定义常量保证这些常量不相等12345678let log = &#123;&#125;log.levels = &#123; DEBUG: Symbol('debug'), INFO: Symbol('info'), WARN: Symbol('warn')&#125;;console.log(log.levels.DEBUG, 'debug message')console.log(log.levels.INFO, 'info message') 保证 Switch 按照设计使用12345678910111213const COLOR_RED = Symbol();const COLOR_GREEN = Symbol();function getComplement(color) &#123; switch (color) &#123; case COLOR_RED: return COLOR_GREEN; case COLOR_GREEN: return COLOR_RED; default: throw new Error('Undefined color'); &#125;&#125; 其他Symbol 还有一些其他方法，请参阅读MDN Web Docs 不过需要特别注意的是，Symbol 定义的属性名，在使用 for...in 、for...of 等需要有迭代器的方法时不会出现，要获得一个对象所有的Symbol 属性名可以使用 Object.getOwnPropertySymbols() 方法。]]></content>
@@ -116,18 +127,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[使用Jest测试JavaScript]]></title>
-    <url>%2F2018%2F09%2F04%2F%E4%BD%BF%E7%94%A8Jest%E6%B5%8B%E8%AF%95JavaScript%2F</url>
-    <content type="text"><![CDATA[Jest 是 Facebook 的一套开源的 JavaScript 测试框架， 它自动集成了断言、JSDom、覆盖率报告等开发者所需要的所有测试工具，是一款几乎零配置的测试框架。并且它对同样是 Facebook 的开源前端框架 React 的测试十分友好。 安装 npm init -y npm install -D jest babel-jest babel-core babel-preset-env regenerator-runtime 使用 在项目根目录添加.babelrc文件 在文件中写入 123&#123; &quot;presets&quot;: [&quot;env&quot;]&#125; 打开package.json文件，将script下的test的值修改为jest： 123"scripts": &#123; "test": "jest"&#125; 编写测试方法 创建src和test目录及相关文件 在项目根目录下创建src目录，并在src目录下添加functions.js文件 在项目根目录下创建test目录，并在test目录下创建functions.test.js文件 测试文件的文件名 = 被测试模块名 + .test.js，例如被测试模块为functions.js，那么对应的测试文件命名为functions.test.js。 Jest 会自动找到项目中所有使用.spec.js或.test.js文件命名的测试文件并执行 在src/functions.js中创建被测试的模块 12345export default &#123; sum(a, b) &#123; return a + b; &#125;&#125; 在test/functions.test.js文件中创建测试用例 12345import functions from '../src/functions';test('sum(2 + 2) 等于 4', () =&gt; &#123; expect(functions.sum(2, 2)).toBe(4);&#125;)]]></content>
-      <categories>
-        <category>前端</category>
-        <category>测试</category>
-      </categories>
-      <tags>
-        <tag>使用说明</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[移动端滑动事件]]></title>
     <url>%2F2018%2F09%2F04%2F%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%BB%91%E5%8A%A8%E4%BA%8B%E4%BB%B6%2F</url>
     <content type="text"><![CDATA[在移动端滑动，在一次滑动中可能触发多次事件，通过加锁可以解决 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768/** * 左滑 * @param &#123;object&#125; e 事件对象 * @returns &#123;boolean&#125; 布尔值 */ function isLeftSlide (e) &#123; var startX = gesture.startX; var startY = gesture.startY; if (gesture.slideLock) &#123; var t = e.originalEvent.changedTouches[0]; var deltaX = t.clientX - startX var deltaY = t.clientY - startY if (deltaX &lt; -20 &amp;&amp; deltaX &gt; -40 &amp;&amp; deltaY &lt; 8 &amp;&amp; deltaY &gt; -8) &#123; gesture.slideLock = false return true &#125; else &#123; return false &#125; &#125; &#125; /** * 右滑 * @param &#123;object&#125; e 事件对象 * @returns &#123;boolean&#125; 布尔值 */ function isRightSlide (e) &#123; var startX = gesture.startX; var startY = gesture.startY; if (gesture.slideLock) &#123; var t = e.originalEvent.changedTouches[0]; var deltaX = t.clientX - startX var deltaY = t.clientY - startY if (deltaX &gt; 20 &amp;&amp; deltaX &lt; 40 &amp;&amp; deltaY &lt; 8 &amp;&amp; deltaY &gt; -8) &#123; gesture.slideLock = false return true &#125; else &#123; return false &#125; &#125; &#125; function touchstart (e) &#123; console.log('e',e); var t = e.originalEvent.changedTouches[0]; var startX = t.clientX; var startY = t.clientY; gesture.slideLock = true; // 滑动事件加锁 gesture.startX = startX; gesture.startY = startY; &#125; function touchmove (e) &#123; if (isLeftSlide(e)) &#123; alert('left'); &#125; if (isRightSlide(e)) &#123; alert('right'); &#125; &#125; $('body').touchstart(function(e)&#123; touchstart(e); &#125;); $('body').touchmove(function(e)&#123; touchmove(e); &#125;);]]></content>
@@ -137,6 +136,18 @@
       </categories>
       <tags>
         <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用Jest测试JavaScript]]></title>
+    <url>%2F2018%2F09%2F04%2F%E4%BD%BF%E7%94%A8Jest%E6%B5%8B%E8%AF%95JavaScript%2F</url>
+    <content type="text"><![CDATA[Jest 是 Facebook 的一套开源的 JavaScript 测试框架， 它自动集成了断言、JSDom、覆盖率报告等开发者所需要的所有测试工具，是一款几乎零配置的测试框架。并且它对同样是 Facebook 的开源前端框架 React 的测试十分友好。 安装 npm init -y npm install -D jest babel-jest babel-core babel-preset-env regenerator-runtime 使用 在项目根目录添加.babelrc文件 在文件中写入 123&#123; &quot;presets&quot;: [&quot;env&quot;]&#125; 打开package.json文件，将script下的test的值修改为jest： 123"scripts": &#123; "test": "jest"&#125; 编写测试方法 创建src和test目录及相关文件 在项目根目录下创建src目录，并在src目录下添加functions.js文件 在项目根目录下创建test目录，并在test目录下创建functions.test.js文件 测试文件的文件名 = 被测试模块名 + .test.js，例如被测试模块为functions.js，那么对应的测试文件命名为functions.test.js。 Jest 会自动找到项目中所有使用.spec.js或.test.js文件命名的测试文件并执行 在src/functions.js中创建被测试的模块 12345export default &#123; sum(a, b) &#123; return a + b; &#125;&#125; 在test/functions.test.js文件中创建测试用例 12345import functions from '../src/functions';test('sum(2 + 2) 等于 4', () =&gt; &#123; expect(functions.sum(2, 2)).toBe(4);&#125;)]]></content>
+      <categories>
+        <category>前端</category>
+        <category>测试</category>
+      </categories>
+      <tags>
+        <tag>使用说明</tag>
       </tags>
   </entry>
   <entry>
