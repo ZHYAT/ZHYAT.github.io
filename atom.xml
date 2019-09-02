@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhyat.cn/"/>
-  <updated>2019-07-10T03:31:57.984Z</updated>
+  <updated>2019-09-02T17:16:35.333Z</updated>
   <id>http://blog.zhyat.cn/</id>
   
   <author>
@@ -15,6 +15,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>设计模式之单例模式</title>
+    <link href="http://blog.zhyat.cn/2019/09/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://blog.zhyat.cn/2019/09/02/设计模式之单例模式/</id>
+    <published>2019-09-02T09:16:35.332Z</published>
+    <updated>2019-09-02T17:16:35.333Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>设计模式之单例模式</title>
+    <link href="http://blog.zhyat.cn/2019/09/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://blog.zhyat.cn/2019/09/02/设计模式之单例模式/</id>
+    <published>2019-09-02T09:16:35.332Z</published>
+    <updated>2019-09-02T17:18:48.382Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>定义：保证一个类仅有一个实例,并提供一个访问它的全局访问点。<br>使用场景：全局缓存、Windows对象、登录浮窗等<br>关键：用一个变量来标志是否已经为某个类创建对象，没有则创建，有则返回这个对象</p><h2 id="标准单例模式"><a href="#标准单例模式" class="headerlink" title="标准单例模式"></a>标准单例模式</h2><p>代码实现：<br><em>javascript code</em><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 标准单例模式</span></span><br><span class="line"><span class="comment"> * 缺点是使用者必须知道这是个单例类，本来可以直接new xxx，现在变成了xxx.getInstance</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> Singleton = <span class="function"><span class="keyword">function</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.instance = <span class="literal">null</span></span><br><span class="line">&#125;;</span><br><span class="line">Singleton.prototype.getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line">Singleton.prototype.getInstance = <span class="function"><span class="keyword">function</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.instance!==<span class="literal">null</span>)&#123;</span><br><span class="line">    <span class="keyword">this</span>.instance = <span class="keyword">new</span> Singleton(name)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.instance</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h2 id="透明单例模式"><a href="#透明单例模式" class="headerlink" title="透明单例模式"></a>透明单例模式</h2><p><em>javascript code</em><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 利用闭包和IIFE实现了透明单例模式</span></span><br><span class="line"><span class="comment"> * 但违反了单一职责原则</span></span><br><span class="line"><span class="comment"> * 缺点是，当不再需要单例时，需要改写构造函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> CreateDiv = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> instance</span><br><span class="line">  <span class="keyword">var</span> CreateDiv = <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (instance) &#123;</span><br><span class="line">      <span class="keyword">return</span> instance</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.html = html</span><br><span class="line">    <span class="keyword">this</span>.init() <span class="comment">// 执行init方法</span></span><br><span class="line">    <span class="keyword">return</span> (instance = <span class="keyword">this</span>) <span class="comment">// 保证只有一个一个对象</span></span><br><span class="line">  &#125;</span><br><span class="line">  CreateDiv.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</span><br><span class="line">    div.innerHTML = <span class="keyword">this</span>.html</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(div)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> CreateDiv</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></p><h2 id="用代理实现的单例"><a href="#用代理实现的单例" class="headerlink" title="用代理实现的单例"></a>用代理实现的单例</h2><p><em>javascript code</em><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 代理实现单例</span></span><br><span class="line"><span class="comment"> * 将负责管理单例的逻辑移到proxySingletonCreate</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> CreateSpan = <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.html = html</span><br><span class="line">  <span class="keyword">this</span>.init()</span><br><span class="line">&#125;</span><br><span class="line">CreateSpan.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> span = <span class="built_in">document</span>.createElement(<span class="string">'span'</span>)</span><br><span class="line">  span.innerHTML = <span class="keyword">this</span>.html</span><br><span class="line">  <span class="built_in">document</span>.body.appendChild(span)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> proxySingletonCreate = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> instance</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!instance) [(instance = <span class="keyword">new</span> CreateSpan(<span class="string">'test'</span>))]</span><br><span class="line">    <span class="keyword">return</span> instance</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></p><h2 id="创建单例的通用方法"><a href="#创建单例的通用方法" class="headerlink" title="创建单例的通用方法"></a>创建单例的通用方法</h2><p>由上可以看出，创建单例的核心即为使用一个变量表示这个对象是否被创建，即：<br><em>javascript code</em><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> instance</span><br><span class="line"><span class="keyword">if</span>(!instance) &#123;</span><br><span class="line">   instance = xxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>具体代码实现即为：<br><em>javascript code</em><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 创建单例的抽象方法</span></span><br><span class="line"><span class="comment"> * @param &#123;function&#125; fn </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> getSingle = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> result</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> result || (result = fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>)) </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot; class=&quot;headerlink&quot; title=&quot;基本概念&quot;&gt;&lt;/a&gt;基本概念&lt;/h2&gt;&lt;p&gt;定义：保证一个类仅有一个实例,并提供一个访问它的全局访问点。&lt;br&gt;使用场景：全局缓存、Windows对象、登录浮窗等&lt;br
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://blog.zhyat.cn/categories/JavaScript/"/>
+    
+    
+      <category term="设计模式/Design Pattern" scheme="http://blog.zhyat.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-Design-Pattern/"/>
+    
+  </entry>
   
   <entry>
     <title>2019-07-10-字体对应的字重</title>
@@ -468,53 +507,6 @@
     
     
       <category term="学习笔记" scheme="http://blog.zhyat.cn/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何看懂铁路图（语法图）</title>
-    <link href="http://blog.zhyat.cn/2017/10/28/%E7%9C%8B%E6%87%82%E9%93%81%E8%B7%AF%E5%9B%BE(%E8%AF%AD%E6%B3%95%E5%9B%BE)/"/>
-    <id>http://blog.zhyat.cn/2017/10/28/看懂铁路图(语法图)/</id>
-    <published>2017-10-28T00:29:00.000Z</published>
-    <updated>2017-11-05T08:52:08.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>语法图（Syntax diagrams ）又叫铁路图（railroad diagrams）是描述形式文法的一种方式。它是巴科斯范式或扩展巴科斯范式的图形化表示。最早使用语法图的书包括Niklaus Wirth写的“Pascal User Manual”（语法图开始于47页）和the Burroughs CANDE manual。在编译领域，像BNF和它的变体这样的文字式表示法都是首选的。BNF能很好的被编译器作者和编译器理解，但是不能很好的被这些语言的大部分用户理解。铁路图能更容易被大多数人理解。数据交换格式JSON之所以流行的部分原因就是它用铁路图来表示。 </p><p>–《维基百科》</p></blockquote><a id="more"></a><h2 id="准则"><a href="#准则" class="headerlink" title="准则"></a>准则</h2><blockquote><ol><li>从左边界开始沿着轨道去到右边界。</li><li>沿途，你将在圆框中遇到的是字面量，在方块中遇到的是规则或者描述。</li><li>任何沿着轨道能走通的序列都是合法的。</li><li>任何不能沿着轨道走通的序列都是非法的。</li><li>每个末端只有一个竖条的铁路图允许在任何一对标记中间插入空白。而在末端有两个竖条的铁路图是不允许的。</li></ol></blockquote><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>以《JavaScript语言精粹》第10页的铁路图为例：</p><p><img src="//blog.zhyat.cn/2017/10/28/看懂铁路图(语法图)/2017-11-05_statements.jpg" alt="语句铁路图"></p><p>一条JavaScript语句可以是：</p><ol><li><code>var name = expression;</code></li><li><code>var name1,name2,name3...,name;</code></li><li><code>var name 1,name2,...name3=expression3,...,name=expression;</code></li><li><code>var name 1,name2,...name3=expression3,...,name;</code></li><li><code>var name1=expression1,name2=expression2,name3=expression3...,name=expression;</code></li></ol><hr><p>参考资料</p><p><a href="https://en.wikipedia.org/wiki/Syntax_diagram" target="_blank" rel="noopener">wikipedia Syntax diagram</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;语法图（Syntax diagrams ）又叫铁路图（railroad diagrams）是描述形式文法的一种方式。它是巴科斯范式或扩展巴科斯范式的图形化表示。最早使用语法图的书包括Niklaus Wirth写的“Pascal User Manual”（语法图开始于47页）和the Burroughs CANDE manual。在编译领域，像BNF和它的变体这样的文字式表示法都是首选的。BNF能很好的被编译器作者和编译器理解，但是不能很好的被这些语言的大部分用户理解。铁路图能更容易被大多数人理解。数据交换格式JSON之所以流行的部分原因就是它用铁路图来表示。 &lt;/p&gt;
-&lt;p&gt;–《维基百科》&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="编译原理" scheme="http://blog.zhyat.cn/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
-    
-    
-      <category term="学习笔记" scheme="http://blog.zhyat.cn/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo添加RSS</title>
-    <link href="http://blog.zhyat.cn/2017/10/23/Hexo%E8%AE%BE%E7%BD%AERSS/"/>
-    <id>http://blog.zhyat.cn/2017/10/23/Hexo设置RSS/</id>
-    <published>2017-10-23T02:30:00.000Z</published>
-    <updated>2017-10-23T02:30:33.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>为Hexo添加RSS订阅模块</p><a id="more"></a><h2 id="安装RSS插件"><a href="#安装RSS插件" class="headerlink" title="安装RSS插件"></a>安装RSS插件</h2><p>在根目录执行命令</p><p><code>npm install hexo-generator-feed --save</code></p><h2 id="在Hexo中开启RSS支持"><a href="#在Hexo中开启RSS支持" class="headerlink" title="在Hexo中开启RSS支持"></a>在Hexo中开启RSS支持</h2><p>在网站根目录下的站点配置文件<code>_config.yml</code> Extensions部分中添加</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">plugin:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">hexo-generator-feed</span></span><br><span class="line">  </span><br><span class="line"><span class="comment"># Feed Atom</span></span><br><span class="line"><span class="attr">feed:</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">atom</span></span><br><span class="line"><span class="attr">path:</span> <span class="string">atom.xml</span></span><br><span class="line"><span class="attr">limit:</span> <span class="number">20</span></span><br></pre></td></tr></table></figure><h2 id="在主题中开启"><a href="#在主题中开启" class="headerlink" title="在主题中开启"></a>在主题中开启</h2><p>我使用的是nexT主题，默认开启，不同主题方式不一样，查阅文档即可。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;为Hexo添加RSS订阅模块&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Hexo" scheme="http://blog.zhyat.cn/categories/Hexo/"/>
-    
-    
-      <category term="使用说明" scheme="http://blog.zhyat.cn/tags/%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/"/>
     
   </entry>
   
