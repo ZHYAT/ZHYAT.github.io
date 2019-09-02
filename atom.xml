@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhyat.cn/"/>
-  <updated>2019-09-02T17:16:35.333Z</updated>
+  <updated>2019-09-02T17:27:38.942Z</updated>
   <id>http://blog.zhyat.cn/</id>
   
   <author>
@@ -15,20 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>设计模式之单例模式</title>
-    <link href="http://blog.zhyat.cn/2019/09/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
-    <id>http://blog.zhyat.cn/2019/09/02/设计模式之单例模式/</id>
-    <published>2019-09-02T09:16:35.332Z</published>
-    <updated>2019-09-02T17:16:35.333Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>设计模式之单例模式</title>
@@ -56,11 +42,11 @@
   </entry>
   
   <entry>
-    <title>2019-07-10-字体对应的字重</title>
+    <title>设计稿中字体对应的字重</title>
     <link href="http://blog.zhyat.cn/2019/07/10/%E5%AD%97%E4%BD%93%E5%AF%B9%E5%BA%94%E7%9A%84%E5%AD%97%E9%87%8D/"/>
     <id>http://blog.zhyat.cn/2019/07/10/字体对应的字重/</id>
     <published>2019-07-09T19:21:55.464Z</published>
-    <updated>2019-07-10T03:31:57.984Z</updated>
+    <updated>2019-09-02T17:30:24.380Z</updated>
     
     <content type="html"><![CDATA[<p>设计师给的标注文件经常会出现一个情况，字重总是通过直接设置具体的字体来指定字重，实际上在font-family那一行Medium指的是字重。<br><img src="/2019/07/10/字体对应的字重/exp1.png" title="例子"></p><p>其对应关系大致符合：<br>100 - Thin<br>200 - Extra Light (Ultra Light)<br>300 - Light<br>400 - Regular (Normal、Book、Roman)<br>500 - Medium<br>600 - Semi Bold (Demi Bold)<br>700 - Bold<br>800 - Extra Bold (Ultra Bold)<br>900 - Black (Heavy)</p>]]></content>
     
@@ -282,30 +268,6 @@
   </entry>
   
   <entry>
-    <title>Typescript 学习笔记—基本语法</title>
-    <link href="http://blog.zhyat.cn/2018/09/05/TypeScript%20%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"/>
-    <id>http://blog.zhyat.cn/2018/09/05/TypeScript 入门笔记/</id>
-    <published>2018-09-04T16:00:00.000Z</published>
-    <updated>2019-02-19T03:35:09.438Z</updated>
-    
-    <content type="html"><![CDATA[<p>为什么使用Typescript？类型系统使代码的可读性更高，扩展性好，是JS的超集。</p><a id="more"></a><h1 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h1><h2 id="定义变量类型"><a href="#定义变量类型" class="headerlink" title="定义变量类型"></a>定义变量类型</h2><ul><li>如果在定义的时候没有定义类型，TS会自动做类型推论<h3 id="原始数据类型-（Primitive-data-types）"><a href="#原始数据类型-（Primitive-data-types）" class="headerlink" title="原始数据类型 （Primitive data types）"></a>原始数据类型 （Primitive data types）</h3>布尔值、数值、字符串、null、undefined 、Symbol</li></ul><h4 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> bur: <span class="built_in">boolean</span> = <span class="literal">false</span> ;</span><br></pre></td></tr></table></figure><p>但需要注意的是用<code>Boolean</code>构造函数创造的不是布尔值而是<code>Boolean</code>对象<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> creatBoolean: <span class="built_in">Boolean</span> = <span class="keyword">new</span> <span class="built_in">Boolean</span>();</span><br></pre></td></tr></table></figure></p><h4 id="数值（number"><a href="#数值（number" class="headerlink" title="数值（number)"></a>数值（number)</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> decLiteral: <span class="built_in">number</span> = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">let</span> hexLiteral: <span class="built_in">number</span> = <span class="number">0xf00d</span>;</span><br><span class="line"><span class="comment">// ES6 中的二进制表示法</span></span><br><span class="line"><span class="keyword">let</span> binaryLiteral: <span class="built_in">number</span> = <span class="number">0b1010</span>;</span><br><span class="line"><span class="comment">// ES6 中的八进制表示法</span></span><br><span class="line"><span class="keyword">let</span> octalLiteral: <span class="built_in">number</span> = <span class="number">0o744</span>;</span><br><span class="line"><span class="keyword">let</span> notANumber: <span class="built_in">number</span> = <span class="literal">NaN</span>;</span><br><span class="line"><span class="keyword">let</span> infinityNumber: <span class="built_in">number</span> = <span class="literal">Infinity</span>;</span><br></pre></td></tr></table></figure><h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myName: <span class="built_in">string</span> = <span class="string">'Tom'</span>;</span><br><span class="line"><span class="keyword">let</span> myAge: <span class="built_in">number</span> = <span class="number">25</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模板字符串</span></span><br><span class="line"><span class="keyword">let</span> sentence: <span class="built_in">string</span> = <span class="string">`Hello, my name is <span class="subst">$&#123;myName&#125;</span>.</span></span><br></pre></td></tr></table></figure><h4 id="空值"><a href="#空值" class="headerlink" title="空值"></a>空值</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> unusable: <span class="built_in">void</span> = <span class="literal">undefined</span>;</span><br></pre></td></tr></table></figure><p>可以用来表示没有返回值的函数</p><h3 id="NULL和-Undefined"><a href="#NULL和-Undefined" class="headerlink" title="NULL和 Undefined"></a>NULL和 Undefined</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> u: <span class="literal">undefined</span> = <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">let</span> n: <span class="literal">null</span> = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure><p><code>undefined</code> 类型的变量只能被赋值为 <code>undefined</code>，<code>null</code> 类型的变量只能被赋值为 <code>null</code>。</p><h3 id="对象类型（Object-types）"><a href="#对象类型（Object-types）" class="headerlink" title="对象类型（Object types）"></a>对象类型（Object types）</h3><h3 id="任意值-（Any）"><a href="#任意值-（Any）" class="headerlink" title="任意值 （Any）"></a>任意值 （Any）</h3><p>只有 Any 类型的值允许被赋值成任何类型<br>可以在任意值上访问任意属性和任意方法<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myNumber: <span class="built_in">any</span> = <span class="string">'seven'</span>;</span><br><span class="line">myNumber = <span class="number">7</span>;</span><br></pre></td></tr></table></figure></p><p>** 可以认为，声明一个变量为任意值之后，对它的任何操作，返回的内容的类型都是任意值。 *\*</p><h3 id="未声明类型"><a href="#未声明类型" class="headerlink" title="未声明类型"></a>未声明类型</h3><p>变量如果在声明的时候，未指定其类型，那么它会被识别为任意值类型<br>如果没有明确的指定类型，那么 TypeScript 会依照类型推论（Type Inference）的规则推断出一个类型</p><h3 id="联合类型-Union-Types）"><a href="#联合类型-Union-Types）" class="headerlink" title="联合类型(Union Types）"></a>联合类型(Union Types）</h3><p>取值可以为多种类型中的一种<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myNumber: <span class="built_in">String</span> | <span class="built_in">Number</span>;</span><br><span class="line">myFavoriteNumber  = <span class="string">'seven'</span>;</span><br><span class="line">myFavoriteNumber  = <span class="number">7</span>;</span><br></pre></td></tr></table></figure></p><p>当 TypeScript 不确定一个联合类型的变量到底是哪个类型的时候，只能访问此联合类型的所有类型里共有的属性或方法</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;为什么使用Typescript？类型系统使代码的可读性更高，扩展性好，是JS的超集。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="前端" scheme="http://blog.zhyat.cn/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="TypeScript" scheme="http://blog.zhyat.cn/categories/%E5%89%8D%E7%AB%AF/TypeScript/"/>
-    
-    
-      <category term="笔记" scheme="http://blog.zhyat.cn/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>旋转数组的多种解法</title>
     <link href="http://blog.zhyat.cn/2018/09/05/%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%9A%E7%A7%8D%E8%A7%A3%E6%B3%95/"/>
     <id>http://blog.zhyat.cn/2018/09/05/旋转数组的多种解法/</id>
@@ -328,6 +290,30 @@
       <category term="笔记" scheme="http://blog.zhyat.cn/tags/%E7%AC%94%E8%AE%B0/"/>
     
       <category term="LeetCode" scheme="http://blog.zhyat.cn/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Typescript 学习笔记—基本语法</title>
+    <link href="http://blog.zhyat.cn/2018/09/05/TypeScript%20%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"/>
+    <id>http://blog.zhyat.cn/2018/09/05/TypeScript 入门笔记/</id>
+    <published>2018-09-04T16:00:00.000Z</published>
+    <updated>2019-02-19T03:35:09.438Z</updated>
+    
+    <content type="html"><![CDATA[<p>为什么使用Typescript？类型系统使代码的可读性更高，扩展性好，是JS的超集。</p><a id="more"></a><h1 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h1><h2 id="定义变量类型"><a href="#定义变量类型" class="headerlink" title="定义变量类型"></a>定义变量类型</h2><ul><li>如果在定义的时候没有定义类型，TS会自动做类型推论<h3 id="原始数据类型-（Primitive-data-types）"><a href="#原始数据类型-（Primitive-data-types）" class="headerlink" title="原始数据类型 （Primitive data types）"></a>原始数据类型 （Primitive data types）</h3>布尔值、数值、字符串、null、undefined 、Symbol</li></ul><h4 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> bur: <span class="built_in">boolean</span> = <span class="literal">false</span> ;</span><br></pre></td></tr></table></figure><p>但需要注意的是用<code>Boolean</code>构造函数创造的不是布尔值而是<code>Boolean</code>对象<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> creatBoolean: <span class="built_in">Boolean</span> = <span class="keyword">new</span> <span class="built_in">Boolean</span>();</span><br></pre></td></tr></table></figure></p><h4 id="数值（number"><a href="#数值（number" class="headerlink" title="数值（number)"></a>数值（number)</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> decLiteral: <span class="built_in">number</span> = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">let</span> hexLiteral: <span class="built_in">number</span> = <span class="number">0xf00d</span>;</span><br><span class="line"><span class="comment">// ES6 中的二进制表示法</span></span><br><span class="line"><span class="keyword">let</span> binaryLiteral: <span class="built_in">number</span> = <span class="number">0b1010</span>;</span><br><span class="line"><span class="comment">// ES6 中的八进制表示法</span></span><br><span class="line"><span class="keyword">let</span> octalLiteral: <span class="built_in">number</span> = <span class="number">0o744</span>;</span><br><span class="line"><span class="keyword">let</span> notANumber: <span class="built_in">number</span> = <span class="literal">NaN</span>;</span><br><span class="line"><span class="keyword">let</span> infinityNumber: <span class="built_in">number</span> = <span class="literal">Infinity</span>;</span><br></pre></td></tr></table></figure><h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myName: <span class="built_in">string</span> = <span class="string">'Tom'</span>;</span><br><span class="line"><span class="keyword">let</span> myAge: <span class="built_in">number</span> = <span class="number">25</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模板字符串</span></span><br><span class="line"><span class="keyword">let</span> sentence: <span class="built_in">string</span> = <span class="string">`Hello, my name is <span class="subst">$&#123;myName&#125;</span>.</span></span><br></pre></td></tr></table></figure><h4 id="空值"><a href="#空值" class="headerlink" title="空值"></a>空值</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> unusable: <span class="built_in">void</span> = <span class="literal">undefined</span>;</span><br></pre></td></tr></table></figure><p>可以用来表示没有返回值的函数</p><h3 id="NULL和-Undefined"><a href="#NULL和-Undefined" class="headerlink" title="NULL和 Undefined"></a>NULL和 Undefined</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> u: <span class="literal">undefined</span> = <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">let</span> n: <span class="literal">null</span> = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure><p><code>undefined</code> 类型的变量只能被赋值为 <code>undefined</code>，<code>null</code> 类型的变量只能被赋值为 <code>null</code>。</p><h3 id="对象类型（Object-types）"><a href="#对象类型（Object-types）" class="headerlink" title="对象类型（Object types）"></a>对象类型（Object types）</h3><h3 id="任意值-（Any）"><a href="#任意值-（Any）" class="headerlink" title="任意值 （Any）"></a>任意值 （Any）</h3><p>只有 Any 类型的值允许被赋值成任何类型<br>可以在任意值上访问任意属性和任意方法<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myNumber: <span class="built_in">any</span> = <span class="string">'seven'</span>;</span><br><span class="line">myNumber = <span class="number">7</span>;</span><br></pre></td></tr></table></figure></p><p>** 可以认为，声明一个变量为任意值之后，对它的任何操作，返回的内容的类型都是任意值。 *\*</p><h3 id="未声明类型"><a href="#未声明类型" class="headerlink" title="未声明类型"></a>未声明类型</h3><p>变量如果在声明的时候，未指定其类型，那么它会被识别为任意值类型<br>如果没有明确的指定类型，那么 TypeScript 会依照类型推论（Type Inference）的规则推断出一个类型</p><h3 id="联合类型-Union-Types）"><a href="#联合类型-Union-Types）" class="headerlink" title="联合类型(Union Types）"></a>联合类型(Union Types）</h3><p>取值可以为多种类型中的一种<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myNumber: <span class="built_in">String</span> | <span class="built_in">Number</span>;</span><br><span class="line">myFavoriteNumber  = <span class="string">'seven'</span>;</span><br><span class="line">myFavoriteNumber  = <span class="number">7</span>;</span><br></pre></td></tr></table></figure></p><p>当 TypeScript 不确定一个联合类型的变量到底是哪个类型的时候，只能访问此联合类型的所有类型里共有的属性或方法</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;为什么使用Typescript？类型系统使代码的可读性更高，扩展性好，是JS的超集。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://blog.zhyat.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="TypeScript" scheme="http://blog.zhyat.cn/categories/%E5%89%8D%E7%AB%AF/TypeScript/"/>
+    
+    
+      <category term="笔记" scheme="http://blog.zhyat.cn/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -504,6 +490,31 @@
       <category term="前端" scheme="http://blog.zhyat.cn/categories/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="ECMScript 6" scheme="http://blog.zhyat.cn/categories/%E5%89%8D%E7%AB%AF/ECMScript-6/"/>
+    
+    
+      <category term="学习笔记" scheme="http://blog.zhyat.cn/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何看懂铁路图（语法图）</title>
+    <link href="http://blog.zhyat.cn/2017/10/28/%E7%9C%8B%E6%87%82%E9%93%81%E8%B7%AF%E5%9B%BE(%E8%AF%AD%E6%B3%95%E5%9B%BE)/"/>
+    <id>http://blog.zhyat.cn/2017/10/28/看懂铁路图(语法图)/</id>
+    <published>2017-10-28T00:29:00.000Z</published>
+    <updated>2017-11-05T08:52:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>语法图（Syntax diagrams ）又叫铁路图（railroad diagrams）是描述形式文法的一种方式。它是巴科斯范式或扩展巴科斯范式的图形化表示。最早使用语法图的书包括Niklaus Wirth写的“Pascal User Manual”（语法图开始于47页）和the Burroughs CANDE manual。在编译领域，像BNF和它的变体这样的文字式表示法都是首选的。BNF能很好的被编译器作者和编译器理解，但是不能很好的被这些语言的大部分用户理解。铁路图能更容易被大多数人理解。数据交换格式JSON之所以流行的部分原因就是它用铁路图来表示。 </p><p>–《维基百科》</p></blockquote><a id="more"></a><h2 id="准则"><a href="#准则" class="headerlink" title="准则"></a>准则</h2><blockquote><ol><li>从左边界开始沿着轨道去到右边界。</li><li>沿途，你将在圆框中遇到的是字面量，在方块中遇到的是规则或者描述。</li><li>任何沿着轨道能走通的序列都是合法的。</li><li>任何不能沿着轨道走通的序列都是非法的。</li><li>每个末端只有一个竖条的铁路图允许在任何一对标记中间插入空白。而在末端有两个竖条的铁路图是不允许的。</li></ol></blockquote><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>以《JavaScript语言精粹》第10页的铁路图为例：</p><p><img src="//blog.zhyat.cn/2017/10/28/看懂铁路图(语法图)/2017-11-05_statements.jpg" alt="语句铁路图"></p><p>一条JavaScript语句可以是：</p><ol><li><code>var name = expression;</code></li><li><code>var name1,name2,name3...,name;</code></li><li><code>var name 1,name2,...name3=expression3,...,name=expression;</code></li><li><code>var name 1,name2,...name3=expression3,...,name;</code></li><li><code>var name1=expression1,name2=expression2,name3=expression3...,name=expression;</code></li></ol><hr><p>参考资料</p><p><a href="https://en.wikipedia.org/wiki/Syntax_diagram" target="_blank" rel="noopener">wikipedia Syntax diagram</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;语法图（Syntax diagrams ）又叫铁路图（railroad diagrams）是描述形式文法的一种方式。它是巴科斯范式或扩展巴科斯范式的图形化表示。最早使用语法图的书包括Niklaus Wirth写的“Pascal User Manual”（语法图开始于47页）和the Burroughs CANDE manual。在编译领域，像BNF和它的变体这样的文字式表示法都是首选的。BNF能很好的被编译器作者和编译器理解，但是不能很好的被这些语言的大部分用户理解。铁路图能更容易被大多数人理解。数据交换格式JSON之所以流行的部分原因就是它用铁路图来表示。 &lt;/p&gt;
+&lt;p&gt;–《维基百科》&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="编译原理" scheme="http://blog.zhyat.cn/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
     
     
       <category term="学习笔记" scheme="http://blog.zhyat.cn/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
