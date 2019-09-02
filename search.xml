@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[设计模式之单例模式]]></title>
     <url>%2F2019%2F09%2F02%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%2F</url>
-    <content type="text"><![CDATA[基本概念定义：保证一个类仅有一个实例,并提供一个访问它的全局访问点。使用场景：全局缓存、Windows对象、登录浮窗等关键：用一个变量来标志是否已经为某个类创建对象，没有则创建，有则返回这个对象 标准单例模式代码实现：javascript code1234567891011121314151617/** * 标准单例模式 * 缺点是使用者必须知道这是个单例类，本来可以直接new xxx，现在变成了xxx.getInstance */var Singleton = function (name) &#123; this.name = name this.instance = null&#125;;Singleton.prototype.getName = function () &#123; alert(this.name)&#125;Singleton.prototype.getInstance = function (name) &#123; if(this.instance!==null)&#123; this.instance = new Singleton(name) &#125; return this.instance&#125; 透明单例模式javascript code12345678910111213141516171819202122/** * 利用闭包和IIFE实现了透明单例模式 * 但违反了单一职责原则 * 缺点是，当不再需要单例时，需要改写构造函数 */var CreateDiv = (function() &#123; var instance var CreateDiv = function(html) &#123; if (instance) &#123; return instance &#125; this.html = html this.init() // 执行init方法 return (instance = this) // 保证只有一个一个对象 &#125; CreateDiv.prototype.init = function() &#123; var div = document.createElement('div') div.innerHTML = this.html document.body.appendChild(div) &#125; return CreateDiv&#125;)() 用代理实现的单例javascript code123456789101112131415161718192021/** * 代理实现单例 * 将负责管理单例的逻辑移到proxySingletonCreate */var CreateSpan = function(html) &#123; this.html = html this.init()&#125;CreateSpan.prototype.init = function() &#123; var span = document.createElement('span') span.innerHTML = this.html document.body.appendChild(span)&#125;var proxySingletonCreate = (function() &#123; var instance return function(html) &#123; if (!instance) [(instance = new CreateSpan('test'))] return instance &#125;&#125;)() 创建单例的通用方法由上可以看出，创建单例的核心即为使用一个变量表示这个对象是否被创建，即：javascript code1234var instanceif(!instance) &#123; instance = xxx&#125; 具体代码实现即为：javascript code`js/** 创建单例的抽象方法 @param {function} fn*/var getSingle = function(fn) {var resultreturn function() { return result || (result = fn.apply(this, arguments))}}]]></content>
+    <content type="text"><![CDATA[基本概念定义：保证一个类仅有一个实例,并提供一个访问它的全局访问点。使用场景：全局缓存、Windows对象、登录浮窗等关键：用一个变量来标志是否已经为某个类创建对象，没有则创建，有则返回这个对象 标准单例模式代码实现：javascript code1234567891011121314151617/** * 标准单例模式 * 缺点是使用者必须知道这是个单例类，本来可以直接new xxx，现在变成了xxx.getInstance */var Singleton = function (name) &#123; this.name = name this.instance = null&#125;;Singleton.prototype.getName = function () &#123; alert(this.name)&#125;Singleton.prototype.getInstance = function (name) &#123; if(this.instance!==null)&#123; this.instance = new Singleton(name) &#125; return this.instance&#125; 透明单例模式javascript code12345678910111213141516171819202122/** * 利用闭包和IIFE实现了透明单例模式 * 但违反了单一职责原则 * 缺点是，当不再需要单例时，需要改写构造函数 */var CreateDiv = (function() &#123; var instance var CreateDiv = function(html) &#123; if (instance) &#123; return instance &#125; this.html = html this.init() // 执行init方法 return (instance = this) // 保证只有一个一个对象 &#125; CreateDiv.prototype.init = function() &#123; var div = document.createElement('div') div.innerHTML = this.html document.body.appendChild(div) &#125; return CreateDiv&#125;)() 用代理实现的单例javascript code123456789101112131415161718192021/** * 代理实现单例 * 将负责管理单例的逻辑移到proxySingletonCreate */var CreateSpan = function(html) &#123; this.html = html this.init()&#125;CreateSpan.prototype.init = function() &#123; var span = document.createElement('span') span.innerHTML = this.html document.body.appendChild(span)&#125;var proxySingletonCreate = (function() &#123; var instance return function(html) &#123; if (!instance) [(instance = new CreateSpan('test'))] return instance &#125;&#125;)() 创建单例的通用方法由上可以看出，创建单例的核心即为使用一个变量表示这个对象是否被创建，即：javascript code1234var instanceif(!instance) &#123; instance = xxx&#125; 具体代码实现即为：javascript code12345678910/** * 创建单例的抽象方法 * @param &#123;function&#125; fn */var getSingle = function(fn) &#123; var result return function() &#123; return result || (result = fn.apply(this, arguments)) &#125;&#125;]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
@@ -113,18 +113,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Typescript 学习笔记—基本语法]]></title>
-    <url>%2F2018%2F09%2F05%2FTypeScript%20%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[为什么使用Typescript？类型系统使代码的可读性更高，扩展性好，是JS的超集。 基本语法定义变量类型 如果在定义的时候没有定义类型，TS会自动做类型推论原始数据类型 （Primitive data types）布尔值、数值、字符串、null、undefined 、Symbol 布尔值1let bur: boolean = false ; 但需要注意的是用Boolean构造函数创造的不是布尔值而是Boolean对象1let creatBoolean: Boolean = new Boolean(); 数值（number)12345678let decLiteral: number = 6;let hexLiteral: number = 0xf00d;// ES6 中的二进制表示法let binaryLiteral: number = 0b1010;// ES6 中的八进制表示法let octalLiteral: number = 0o744;let notANumber: number = NaN;let infinityNumber: number = Infinity; 字符串12345let myName: string = 'Tom';let myAge: number = 25;// 模板字符串let sentence: string = `Hello, my name is $&#123;myName&#125;. 空值1let unusable: void = undefined; 可以用来表示没有返回值的函数 NULL和 Undefined12let u: undefined = undefined;let n: null = null; undefined 类型的变量只能被赋值为 undefined，null 类型的变量只能被赋值为 null。 对象类型（Object types）任意值 （Any）只有 Any 类型的值允许被赋值成任何类型可以在任意值上访问任意属性和任意方法12let myNumber: any = 'seven';myNumber = 7; ** 可以认为，声明一个变量为任意值之后，对它的任何操作，返回的内容的类型都是任意值。 *\* 未声明类型变量如果在声明的时候，未指定其类型，那么它会被识别为任意值类型如果没有明确的指定类型，那么 TypeScript 会依照类型推论（Type Inference）的规则推断出一个类型 联合类型(Union Types）取值可以为多种类型中的一种123let myNumber: String | Number;myFavoriteNumber = 'seven';myFavoriteNumber = 7; 当 TypeScript 不确定一个联合类型的变量到底是哪个类型的时候，只能访问此联合类型的所有类型里共有的属性或方法]]></content>
-      <categories>
-        <category>前端</category>
-        <category>TypeScript</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[旋转数组的多种解法]]></title>
     <url>%2F2018%2F09%2F05%2F%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%9A%E7%A7%8D%E8%A7%A3%E6%B3%95%2F</url>
     <content type="text"><![CDATA[给定一个数组，将数组中的元素向右移动 k 个位置，其中 k 是非负数。 题目描述输入: [1,2,3,4,5,6,7] 和 k = 3输出: [5,6,7,1,2,3,4]解释:向右旋转 1 步: [7,1,2,3,4,5,6]向右旋转 2 步: [6,7,1,2,3,4,5]向右旋转 3 步: [5,6,7,1,2,3,4] 说明 尽可能想出更多的解决方案，至少有三种不同的方法可以解决这个问题。 要求使用空间复杂度为 O(1) 的原地算法。 解法解法一执行时间：140 ms 空间复杂度： 时间复杂度：1234567891011/** * @param &#123;number[]&#125; nums * @param &#123;number&#125; k * @return &#123;void&#125; Do not return anything, modify nums in-place instead. */var rotate = function(nums, k) &#123; let temp = nums.splice( nums.length-k, k ) for( let i = temp.length - 1; i &gt;= 0; i--)&#123; nums.unshift( temp[i] ) &#125;&#125; 解法二执行时间]]></content>
@@ -138,12 +126,12 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[移动端滑动事件]]></title>
-    <url>%2F2018%2F09%2F04%2F%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%BB%91%E5%8A%A8%E4%BA%8B%E4%BB%B6%2F</url>
-    <content type="text"><![CDATA[在移动端滑动，在一次滑动中可能触发多次事件，通过加锁可以解决 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768/** * 左滑 * @param &#123;object&#125; e 事件对象 * @returns &#123;boolean&#125; 布尔值 */ function isLeftSlide (e) &#123; var startX = gesture.startX; var startY = gesture.startY; if (gesture.slideLock) &#123; var t = e.originalEvent.changedTouches[0]; var deltaX = t.clientX - startX var deltaY = t.clientY - startY if (deltaX &lt; -20 &amp;&amp; deltaX &gt; -40 &amp;&amp; deltaY &lt; 8 &amp;&amp; deltaY &gt; -8) &#123; gesture.slideLock = false return true &#125; else &#123; return false &#125; &#125; &#125; /** * 右滑 * @param &#123;object&#125; e 事件对象 * @returns &#123;boolean&#125; 布尔值 */ function isRightSlide (e) &#123; var startX = gesture.startX; var startY = gesture.startY; if (gesture.slideLock) &#123; var t = e.originalEvent.changedTouches[0]; var deltaX = t.clientX - startX var deltaY = t.clientY - startY if (deltaX &gt; 20 &amp;&amp; deltaX &lt; 40 &amp;&amp; deltaY &lt; 8 &amp;&amp; deltaY &gt; -8) &#123; gesture.slideLock = false return true &#125; else &#123; return false &#125; &#125; &#125; function touchstart (e) &#123; console.log('e',e); var t = e.originalEvent.changedTouches[0]; var startX = t.clientX; var startY = t.clientY; gesture.slideLock = true; // 滑动事件加锁 gesture.startX = startX; gesture.startY = startY; &#125; function touchmove (e) &#123; if (isLeftSlide(e)) &#123; alert('left'); &#125; if (isRightSlide(e)) &#123; alert('right'); &#125; &#125; $('body').touchstart(function(e)&#123; touchstart(e); &#125;); $('body').touchmove(function(e)&#123; touchmove(e); &#125;);]]></content>
+    <title><![CDATA[Typescript 学习笔记—基本语法]]></title>
+    <url>%2F2018%2F09%2F05%2FTypeScript%20%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[为什么使用Typescript？类型系统使代码的可读性更高，扩展性好，是JS的超集。 基本语法定义变量类型 如果在定义的时候没有定义类型，TS会自动做类型推论原始数据类型 （Primitive data types）布尔值、数值、字符串、null、undefined 、Symbol 布尔值1let bur: boolean = false ; 但需要注意的是用Boolean构造函数创造的不是布尔值而是Boolean对象1let creatBoolean: Boolean = new Boolean(); 数值（number)12345678let decLiteral: number = 6;let hexLiteral: number = 0xf00d;// ES6 中的二进制表示法let binaryLiteral: number = 0b1010;// ES6 中的八进制表示法let octalLiteral: number = 0o744;let notANumber: number = NaN;let infinityNumber: number = Infinity; 字符串12345let myName: string = 'Tom';let myAge: number = 25;// 模板字符串let sentence: string = `Hello, my name is $&#123;myName&#125;. 空值1let unusable: void = undefined; 可以用来表示没有返回值的函数 NULL和 Undefined12let u: undefined = undefined;let n: null = null; undefined 类型的变量只能被赋值为 undefined，null 类型的变量只能被赋值为 null。 对象类型（Object types）任意值 （Any）只有 Any 类型的值允许被赋值成任何类型可以在任意值上访问任意属性和任意方法12let myNumber: any = 'seven';myNumber = 7; ** 可以认为，声明一个变量为任意值之后，对它的任何操作，返回的内容的类型都是任意值。 *\* 未声明类型变量如果在声明的时候，未指定其类型，那么它会被识别为任意值类型如果没有明确的指定类型，那么 TypeScript 会依照类型推论（Type Inference）的规则推断出一个类型 联合类型(Union Types）取值可以为多种类型中的一种123let myNumber: String | Number;myFavoriteNumber = 'seven';myFavoriteNumber = 7; 当 TypeScript 不确定一个联合类型的变量到底是哪个类型的时候，只能访问此联合类型的所有类型里共有的属性或方法]]></content>
       <categories>
         <category>前端</category>
-        <category>JQuery</category>
+        <category>TypeScript</category>
       </categories>
       <tags>
         <tag>笔记</tag>
@@ -159,6 +147,18 @@
       </categories>
       <tags>
         <tag>使用说明</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[移动端滑动事件]]></title>
+    <url>%2F2018%2F09%2F04%2F%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%BB%91%E5%8A%A8%E4%BA%8B%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[在移动端滑动，在一次滑动中可能触发多次事件，通过加锁可以解决 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768/** * 左滑 * @param &#123;object&#125; e 事件对象 * @returns &#123;boolean&#125; 布尔值 */ function isLeftSlide (e) &#123; var startX = gesture.startX; var startY = gesture.startY; if (gesture.slideLock) &#123; var t = e.originalEvent.changedTouches[0]; var deltaX = t.clientX - startX var deltaY = t.clientY - startY if (deltaX &lt; -20 &amp;&amp; deltaX &gt; -40 &amp;&amp; deltaY &lt; 8 &amp;&amp; deltaY &gt; -8) &#123; gesture.slideLock = false return true &#125; else &#123; return false &#125; &#125; &#125; /** * 右滑 * @param &#123;object&#125; e 事件对象 * @returns &#123;boolean&#125; 布尔值 */ function isRightSlide (e) &#123; var startX = gesture.startX; var startY = gesture.startY; if (gesture.slideLock) &#123; var t = e.originalEvent.changedTouches[0]; var deltaX = t.clientX - startX var deltaY = t.clientY - startY if (deltaX &gt; 20 &amp;&amp; deltaX &lt; 40 &amp;&amp; deltaY &lt; 8 &amp;&amp; deltaY &gt; -8) &#123; gesture.slideLock = false return true &#125; else &#123; return false &#125; &#125; &#125; function touchstart (e) &#123; console.log('e',e); var t = e.originalEvent.changedTouches[0]; var startX = t.clientX; var startY = t.clientY; gesture.slideLock = true; // 滑动事件加锁 gesture.startX = startX; gesture.startY = startY; &#125; function touchmove (e) &#123; if (isLeftSlide(e)) &#123; alert('left'); &#125; if (isRightSlide(e)) &#123; alert('right'); &#125; &#125; $('body').touchstart(function(e)&#123; touchstart(e); &#125;); $('body').touchmove(function(e)&#123; touchmove(e); &#125;);]]></content>
+      <categories>
+        <category>前端</category>
+        <category>JQuery</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
