@@ -1,7 +1,7 @@
-hexo generate
-cp -R public/* .deploy/zhyat.github.io
-cd .deploy/zhyat.github.io
-git add .
+hexo clean
+hexo g -d 
+cd ./.deploy_git
+git add . -f
 git commit -m "update"
-git push -u origin master
-
+git push codeing
+git push github
