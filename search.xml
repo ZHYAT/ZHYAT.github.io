@@ -113,6 +113,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Typescript 学习笔记—基本语法]]></title>
+    <url>%2F2018%2F09%2F05%2FTypeScript%20%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[为什么使用Typescript？类型系统使代码的可读性更高，扩展性好，是JS的超集。 基本语法定义变量类型 如果在定义的时候没有定义类型，TS会自动做类型推论原始数据类型 （Primitive data types）布尔值、数值、字符串、null、undefined 、Symbol 布尔值1let bur: boolean = false ; 但需要注意的是用Boolean构造函数创造的不是布尔值而是Boolean对象1let creatBoolean: Boolean = new Boolean(); 数值（number)12345678let decLiteral: number = 6;let hexLiteral: number = 0xf00d;// ES6 中的二进制表示法let binaryLiteral: number = 0b1010;// ES6 中的八进制表示法let octalLiteral: number = 0o744;let notANumber: number = NaN;let infinityNumber: number = Infinity; 字符串12345let myName: string = 'Tom';let myAge: number = 25;// 模板字符串let sentence: string = `Hello, my name is $&#123;myName&#125;. 空值1let unusable: void = undefined; 可以用来表示没有返回值的函数 NULL和 Undefined12let u: undefined = undefined;let n: null = null; undefined 类型的变量只能被赋值为 undefined，null 类型的变量只能被赋值为 null。 对象类型（Object types）任意值 （Any）只有 Any 类型的值允许被赋值成任何类型可以在任意值上访问任意属性和任意方法12let myNumber: any = 'seven';myNumber = 7; ** 可以认为，声明一个变量为任意值之后，对它的任何操作，返回的内容的类型都是任意值。 *\* 未声明类型变量如果在声明的时候，未指定其类型，那么它会被识别为任意值类型如果没有明确的指定类型，那么 TypeScript 会依照类型推论（Type Inference）的规则推断出一个类型 联合类型(Union Types）取值可以为多种类型中的一种123let myNumber: String | Number;myFavoriteNumber = 'seven';myFavoriteNumber = 7; 当 TypeScript 不确定一个联合类型的变量到底是哪个类型的时候，只能访问此联合类型的所有类型里共有的属性或方法]]></content>
+      <categories>
+        <category>前端</category>
+        <category>TypeScript</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[旋转数组的多种解法]]></title>
     <url>%2F2018%2F09%2F05%2F%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%9A%E7%A7%8D%E8%A7%A3%E6%B3%95%2F</url>
     <content type="text"><![CDATA[给定一个数组，将数组中的元素向右移动 k 个位置，其中 k 是非负数。 题目描述输入: [1,2,3,4,5,6,7] 和 k = 3输出: [5,6,7,1,2,3,4]解释:向右旋转 1 步: [7,1,2,3,4,5,6]向右旋转 2 步: [6,7,1,2,3,4,5]向右旋转 3 步: [5,6,7,1,2,3,4] 说明 尽可能想出更多的解决方案，至少有三种不同的方法可以解决这个问题。 要求使用空间复杂度为 O(1) 的原地算法。 解法解法一执行时间：140 ms 空间复杂度： 时间复杂度：1234567891011/** * @param &#123;number[]&#125; nums * @param &#123;number&#125; k * @return &#123;void&#125; Do not return anything, modify nums in-place instead. */var rotate = function(nums, k) &#123; let temp = nums.splice( nums.length-k, k ) for( let i = temp.length - 1; i &gt;= 0; i--)&#123; nums.unshift( temp[i] ) &#125;&#125; 解法二执行时间]]></content>
@@ -123,18 +135,6 @@
       <tags>
         <tag>笔记</tag>
         <tag>LeetCode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Typescript 学习笔记—基本语法]]></title>
-    <url>%2F2018%2F09%2F05%2FTypeScript%20%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[为什么使用Typescript？类型系统使代码的可读性更高，扩展性好，是JS的超集。 基本语法定义变量类型 如果在定义的时候没有定义类型，TS会自动做类型推论原始数据类型 （Primitive data types）布尔值、数值、字符串、null、undefined 、Symbol 布尔值1let bur: boolean = false ; 但需要注意的是用Boolean构造函数创造的不是布尔值而是Boolean对象1let creatBoolean: Boolean = new Boolean(); 数值（number)12345678let decLiteral: number = 6;let hexLiteral: number = 0xf00d;// ES6 中的二进制表示法let binaryLiteral: number = 0b1010;// ES6 中的八进制表示法let octalLiteral: number = 0o744;let notANumber: number = NaN;let infinityNumber: number = Infinity; 字符串12345let myName: string = 'Tom';let myAge: number = 25;// 模板字符串let sentence: string = `Hello, my name is $&#123;myName&#125;. 空值1let unusable: void = undefined; 可以用来表示没有返回值的函数 NULL和 Undefined12let u: undefined = undefined;let n: null = null; undefined 类型的变量只能被赋值为 undefined，null 类型的变量只能被赋值为 null。 对象类型（Object types）任意值 （Any）只有 Any 类型的值允许被赋值成任何类型可以在任意值上访问任意属性和任意方法12let myNumber: any = 'seven';myNumber = 7; ** 可以认为，声明一个变量为任意值之后，对它的任何操作，返回的内容的类型都是任意值。 *\* 未声明类型变量如果在声明的时候，未指定其类型，那么它会被识别为任意值类型如果没有明确的指定类型，那么 TypeScript 会依照类型推论（Type Inference）的规则推断出一个类型 联合类型(Union Types）取值可以为多种类型中的一种123let myNumber: String | Number;myFavoriteNumber = 'seven';myFavoriteNumber = 7; 当 TypeScript 不确定一个联合类型的变量到底是哪个类型的时候，只能访问此联合类型的所有类型里共有的属性或方法]]></content>
-      <categories>
-        <category>前端</category>
-        <category>TypeScript</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
