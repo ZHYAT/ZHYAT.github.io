@@ -154,7 +154,7 @@ body {
   background: #fff;
   color: #555;
   font-family: 'Microsoft YaHei', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 14em;
+  font-size: 1em;
   line-height: 2;
 }
 @media (max-width: 991px) {
@@ -175,22 +175,22 @@ h6 {
   padding: 0;
 }
 h1 {
-  font-size: 25.875em;
+  font-size: 1.475em;
 }
 h2 {
-  font-size: 25.75em;
+  font-size: 1.35em;
 }
 h3 {
-  font-size: 25.625em;
+  font-size: 1.225em;
 }
 h4 {
-  font-size: 25.5em;
+  font-size: 1.1em;
 }
 h5 {
-  font-size: 25.375em;
+  font-size: 0.975em;
 }
 h6 {
-  font-size: 25.25em;
+  font-size: 0.85em;
 }
 p {
   margin: 0 0 20px 0;
@@ -1027,7 +1027,7 @@ pre .javascript .function {
   border-bottom: none;
   color: #fff;
   display: inline-block;
-  line-height: 26em;
+  line-height: 1.6em;
   padding: 0 40px;
   position: relative;
 }
@@ -1043,7 +1043,7 @@ pre .javascript .function {
 .site-title {
   display: inline-block;
   font-family: 'Roboto Mono', 'Microsoft YaHei', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 26em;
+  font-size: 1.6em;
   font-weight: normal;
   line-height: 1.5;
   vertical-align: top;
@@ -1673,7 +1673,7 @@ article:last-child .post-eof {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #bfffff;
+  background: #a1ff59;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
