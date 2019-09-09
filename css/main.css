@@ -153,8 +153,8 @@ template {
 body {
   background: #fff;
   color: #555;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 1em;
+  font-family: 'Microsoft YaHei', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 14em;
   line-height: 2;
 }
 @media (max-width: 991px) {
@@ -168,7 +168,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Microsoft YaHei', 'Microsoft YaHei', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-weight: bold;
   line-height: 1.5;
   margin: 20px 0 15px;
@@ -408,7 +408,7 @@ pre,
 }
 pre,
 code {
-  font-family: consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
+  font-family: 'Source Code Pro', consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
 }
 code {
   overflow-wrap: break-word;
@@ -1027,7 +1027,7 @@ pre .javascript .function {
   border-bottom: none;
   color: #fff;
   display: inline-block;
-  line-height: 1.375em;
+  line-height: 26em;
   padding: 0 40px;
   position: relative;
 }
@@ -1042,8 +1042,8 @@ pre .javascript .function {
 }
 .site-title {
   display: inline-block;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 1.375em;
+  font-family: 'Roboto Mono', 'Microsoft YaHei', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 26em;
   font-weight: normal;
   line-height: 1.5;
   vertical-align: top;
@@ -1134,7 +1134,7 @@ pre .javascript .function {
 .post-body {
   overflow-wrap: break-word;
   word-wrap: break-word;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Nova Flat', 'Microsoft YaHei', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 @media (min-width: 1200px) {
   .post-body {
@@ -1420,7 +1420,7 @@ article:last-child .post-eof {
 }
 .posts-expand .post-meta {
   color: #999;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Nova Flat', 'Microsoft YaHei', "PingFang SC", "Microsoft YaHei", sans-serif;
   margin: 3px 0 60px 0;
   text-align: center;
 }
@@ -1673,7 +1673,7 @@ article:last-child .post-eof {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #add75e;
+  background: #25a6ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
