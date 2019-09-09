@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhyat.cn/"/>
-  <updated>2019-09-09T08:19:48.816Z</updated>
+  <updated>2019-09-09T11:22:46.106Z</updated>
   <id>http://blog.zhyat.cn/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>微信小程序路由栈不能超过 10 的解决方案</title>
+    <link href="http://blog.zhyat.cn/2019/09/09/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%B7%AF%E7%94%B1%E6%A0%88%E4%B8%8D%E8%83%BD%E8%B6%85%E8%BF%8710%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>http://blog.zhyat.cn/2019/09/09/小程序路由栈不能超过10的解决方案/</id>
+    <published>2019-09-08T16:00:00.000Z</published>
+    <updated>2019-09-09T11:22:46.106Z</updated>
+    
+    <content type="html"><![CDATA[<p>微信小程序路由跳转有个隐藏的坑，就是 <code>wx.navigateTo</code>打开新页面，最多只能打开10个，超过10个之后就没反应，控制台也不会报错。<br><a id="more"></a></p><h2 id="方案一：最粗暴…navigateTo不行，那就redirectTo"><a href="#方案一：最粗暴…navigateTo不行，那就redirectTo" class="headerlink" title="方案一：最粗暴…navigateTo不行，那就redirectTo"></a>方案一：最粗暴…<code>navigateTo</code>不行，那就<code>redirectTo</code></h2><p>小程序路由跳转的方式有五种，分别是<code>wx.navigateTo</code>（打开新页面，新页面入栈）、<code>wx.redirectTo</code>（重定向，当前页面出栈，新页面入栈）、<code>wx.navigateBack</code>（返回，页面不断出栈，直到目标返回页）、<code>wx.switchTab</code>（切换tab页面，页面全部出栈，只留下新的 Tab 页面）、<code>wx.reLaunch</code>（页面全部出栈，只留下新的页面）</p><p>由此产生了第一种方式，当页面栈超过 10 时，直接用<code>redirectTo</code>。</p><p>但这样太粗暴了，显然很多场景是需要保留访问过的页面的，由此有了方案一的升级版。</p><h2 id="方案一升级版：根据页面栈决定当前跳转方式"><a href="#方案一升级版：根据页面栈决定当前跳转方式" class="headerlink" title="方案一升级版：根据页面栈决定当前跳转方式"></a>方案一升级版：根据页面栈决定当前跳转方式</h2><p>每次跳转先去页面栈中查找目标页面是否已经访问过，如果访问过则用<code>wx.navigateBack</code>返回，如果没有访问过则判断页面栈中是否已经有10个页面，有则用<code>wx.redirectTo</code>，没有则<code>navigateTo</code><br> <em>js code</em><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RouteMp</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(opt=&#123;&#125;) &#123;</span><br><span class="line">    <span class="keyword">this</span>.MAX_DEEP = opt.MAX_DEEP || <span class="number">10</span></span><br><span class="line">    <span class="keyword">this</span>.IS_AUTO_BACK = opt.IS_AUTO_BACK || <span class="literal">true</span></span><br><span class="line">    <span class="keyword">this</span>.PAGE_STACk = getCurrentPages()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  _findPageInHistory(path) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; PAGE_STACk &#125; = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">let</span> delta = <span class="number">-1</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; PAGE_STACk.length; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (PAGE_STACk[i].route === path) &#123;</span><br><span class="line">        delta = i + <span class="number">1</span> <span class="comment">// 目标页在栈中的位置</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> delta</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  _dataToUrlQuery(data=&#123;&#125;) &#123;</span><br><span class="line">    <span class="keyword">let</span> query = <span class="string">'?'</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> prop <span class="keyword">in</span> data) &#123;</span><br><span class="line">      <span class="keyword">if</span> (data.hasOwnProperty(prop)) &#123;</span><br><span class="line">        <span class="keyword">const</span> value = data[prop];</span><br><span class="line">        query += <span class="string">`<span class="subst">$&#123;prop&#125;</span>=<span class="subst">$&#123;value&#125;</span>&amp;`</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> query.replace(<span class="regexp">/&amp;$/</span>, <span class="string">''</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  goPage(opt) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!opt) <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'缺少参数'</span>)</span><br><span class="line">    <span class="keyword">if</span> (opt &amp;&amp; !opt.path) <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'缺少跳转目标path'</span>)</span><br><span class="line">    <span class="keyword">const</span> &#123; PAGE_STACk &#125; = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">const</span> pageStackLen = PAGE_STACk.length</span><br><span class="line">    <span class="keyword">let</span> &#123; path, data &#125; = opt</span><br><span class="line">    <span class="keyword">let</span> delta = <span class="keyword">this</span>._findPageInHistory(path)</span><br><span class="line">    path = <span class="string">'/'</span> + path.replace(<span class="regexp">/^\//</span>, <span class="string">''</span>) + <span class="keyword">this</span>._dataToUrlQuery(data)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (delta &gt; <span class="number">-1</span> &amp;&amp; <span class="keyword">this</span>.IS_AUTO_BACK) &#123;</span><br><span class="line">      <span class="comment">// 如果有目标页已经是被访问过的</span></span><br><span class="line">      <span class="keyword">const</span> backPage = PAGE_STACk[pageStackLen - delta]</span><br><span class="line">      backPage.setData(&#123;data&#125;);</span><br><span class="line">      wx.navigateBack(&#123;</span><br><span class="line">        delta: pageStackLen - delta</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (pageStackLen &lt; <span class="keyword">this</span>.MAX_DEEP) &#123;</span><br><span class="line">        wx.navigateTo(&#123;</span><br><span class="line">          url: path</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        wx.redirectTo(&#123;</span><br><span class="line">          url: path</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = RouteMp</span><br></pre></td></tr></table></figure></p><p>但是这样依然有问题，页面传参数变得无法统一，而且明明是前进页面，用户使用的时候很可能看着就是返回了几个页面。</p><h2 id="方案二：在小程序页面栈之外维护多一个自己的逻辑栈"><a href="#方案二：在小程序页面栈之外维护多一个自己的逻辑栈" class="headerlink" title="方案二：在小程序页面栈之外维护多一个自己的逻辑栈"></a>方案二：在小程序页面栈之外维护多一个自己的逻辑栈</h2><p>这个方案并非我们自己想到的，出处是某位清华学霸，我是在<a href="">[掘金-小程序无限层级路由方案] https://juejin.im/post/5c09d82e51882517165dd485 </a>看到的。</p><p>总的来说就是：vim</p><ol><li>9层（含9层）以内时：走小程序自己的历史栈就ok了，跳转时候更新一下逻辑栈，这没啥可说的</li><li>从9层跳转10层：需要把第9层重定向到中转页，再由中转页跳转到10层</li><li>10层以后跳转：在navigateTo方法中处理，到10层之后，再跳转就第10层页面一直做redirectTo（重定向）操作了</li><li>10层以上返回：会返回到中转页，由中转页判断，具体返回到哪个页面，然后navigateTo（跳转）过去</li><li>从10层返回到9层：返回到中转页，将中转页redirectTo（重定向）到第9层页面</li><li>9层内的返回：直接返回就好了，返回时候不会更新逻辑栈，但没有关系，因为只有中转页才会用到逻辑栈</li><li>逻辑栈更新机制：<ul><li>跳转、返回中转页时更新<ul><li>navigateTo时更新</li><li>redirectTo时更新</li><li>reLaunch时更新</li><li>navigateBack时更新</li></ul></li></ul></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;微信小程序路由跳转有个隐藏的坑，就是 &lt;code&gt;wx.navigateTo&lt;/code&gt;打开新页面，最多只能打开10个，超过10个之后就没反应，控制台也不会报错。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://blog.zhyat.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="微信小程序" scheme="http://blog.zhyat.cn/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>设计模式之单例模式</title>
@@ -490,31 +512,6 @@
       <category term="前端" scheme="http://blog.zhyat.cn/categories/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="ECMScript 6" scheme="http://blog.zhyat.cn/categories/%E5%89%8D%E7%AB%AF/ECMScript-6/"/>
-    
-    
-      <category term="学习笔记" scheme="http://blog.zhyat.cn/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何看懂铁路图（语法图）</title>
-    <link href="http://blog.zhyat.cn/2017/10/28/%E7%9C%8B%E6%87%82%E9%93%81%E8%B7%AF%E5%9B%BE(%E8%AF%AD%E6%B3%95%E5%9B%BE)/"/>
-    <id>http://blog.zhyat.cn/2017/10/28/看懂铁路图(语法图)/</id>
-    <published>2017-10-28T00:29:00.000Z</published>
-    <updated>2017-11-05T08:52:08.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>语法图（Syntax diagrams ）又叫铁路图（railroad diagrams）是描述形式文法的一种方式。它是巴科斯范式或扩展巴科斯范式的图形化表示。最早使用语法图的书包括Niklaus Wirth写的“Pascal User Manual”（语法图开始于47页）和the Burroughs CANDE manual。在编译领域，像BNF和它的变体这样的文字式表示法都是首选的。BNF能很好的被编译器作者和编译器理解，但是不能很好的被这些语言的大部分用户理解。铁路图能更容易被大多数人理解。数据交换格式JSON之所以流行的部分原因就是它用铁路图来表示。 </p><p>–《维基百科》</p></blockquote><a id="more"></a><h2 id="准则"><a href="#准则" class="headerlink" title="准则"></a>准则</h2><blockquote><ol><li>从左边界开始沿着轨道去到右边界。</li><li>沿途，你将在圆框中遇到的是字面量，在方块中遇到的是规则或者描述。</li><li>任何沿着轨道能走通的序列都是合法的。</li><li>任何不能沿着轨道走通的序列都是非法的。</li><li>每个末端只有一个竖条的铁路图允许在任何一对标记中间插入空白。而在末端有两个竖条的铁路图是不允许的。</li></ol></blockquote><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>以《JavaScript语言精粹》第10页的铁路图为例：</p><p><img src="//blog.zhyat.cn/2017/10/28/看懂铁路图(语法图)/2017-11-05_statements.jpg" alt="语句铁路图"></p><p>一条JavaScript语句可以是：</p><ol><li><code>var name = expression;</code></li><li><code>var name1,name2,name3...,name;</code></li><li><code>var name 1,name2,...name3=expression3,...,name=expression;</code></li><li><code>var name 1,name2,...name3=expression3,...,name;</code></li><li><code>var name1=expression1,name2=expression2,name3=expression3...,name=expression;</code></li></ol><hr><p>参考资料</p><p><a href="https://en.wikipedia.org/wiki/Syntax_diagram" target="_blank" rel="noopener">wikipedia Syntax diagram</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;语法图（Syntax diagrams ）又叫铁路图（railroad diagrams）是描述形式文法的一种方式。它是巴科斯范式或扩展巴科斯范式的图形化表示。最早使用语法图的书包括Niklaus Wirth写的“Pascal User Manual”（语法图开始于47页）和the Burroughs CANDE manual。在编译领域，像BNF和它的变体这样的文字式表示法都是首选的。BNF能很好的被编译器作者和编译器理解，但是不能很好的被这些语言的大部分用户理解。铁路图能更容易被大多数人理解。数据交换格式JSON之所以流行的部分原因就是它用铁路图来表示。 &lt;/p&gt;
-&lt;p&gt;–《维基百科》&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="编译原理" scheme="http://blog.zhyat.cn/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
     
     
       <category term="学习笔记" scheme="http://blog.zhyat.cn/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
