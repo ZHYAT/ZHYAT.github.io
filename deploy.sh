@@ -6,5 +6,5 @@ git commit -m "update"
 git push codeing
 git push github
 cd ../
-git add .
+git add . -f
 git commit -m 'update'
