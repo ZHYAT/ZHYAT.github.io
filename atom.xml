@@ -68,7 +68,7 @@
     <link href="http://blog.zhyat.cn/2019/07/10/%E5%AD%97%E4%BD%93%E5%AF%B9%E5%BA%94%E7%9A%84%E5%AD%97%E9%87%8D/"/>
     <id>http://blog.zhyat.cn/2019/07/10/字体对应的字重/</id>
     <published>2019-07-09T19:21:55.464Z</published>
-    <updated>2019-09-02T17:30:24.380Z</updated>
+    <updated>2019-12-31T05:49:59.539Z</updated>
     
     <content type="html"><![CDATA[<p>设计师给的标注文件经常会出现一个情况，字重总是通过直接设置具体的字体来指定字重，实际上在font-family那一行Medium指的是字重。<br><img src="/2019/07/10/字体对应的字重/exp1.png" title="例子"></p><p>其对应关系大致符合：<br>100 - Thin<br>200 - Extra Light (Ultra Light)<br>300 - Light<br>400 - Regular (Normal、Book、Roman)<br>500 - Medium<br>600 - Semi Bold (Demi Bold)<br>700 - Bold<br>800 - Extra Bold (Ultra Bold)<br>900 - Black (Heavy)</p>]]></content>
     
