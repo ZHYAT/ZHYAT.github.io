@@ -72,7 +72,10 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+## https://github.com/probberechts/hexo-theme-cactus#install
+theme: cactus
+theme_config:
+  colorscheme: white
 plugin:
   - hexo-generator-feed
   
@@ -97,4 +100,4 @@ search:
   path: search.xml
   field: post
   format: html
-  limit: 10000
+  limit: 10000  
