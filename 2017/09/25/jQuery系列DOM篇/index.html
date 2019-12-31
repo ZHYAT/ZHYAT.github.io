@@ -1,61 +1,12 @@
 <!DOCTYPE html>
-
-
-
-
-
-<html lang="zh-Hans">
-<head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
-
-<link rel="stylesheet" href="/css/main.css?v=7.4.0">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-
-
-<script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '7.4.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: 'Copy',
-      copy_success: 'Copied',
-      copy_failure: 'Copy failed'
-    },
-    sidebarPadding: 40
-  };
-</script>
-
-  <meta name="description" content="Write Less，Do More  从最基本DOM操作开始。">
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Write Less，Do More  从最基本DOM操作开始。">
 <meta name="keywords" content="学习笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jQuery DOM操作">
@@ -73,225 +24,141 @@
 <meta name="twitter:title" content="jQuery DOM操作">
 <meta name="twitter:description" content="Write Less，Do More  从最基本DOM操作开始。">
 <meta name="twitter:image" content="http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/2017-10-23_table.jpg">
-  <link rel="alternate" href="/atom.xml" title="Zhyat Blog" type="application/atom+xml">
-  <link rel="canonical" href="http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
-  };
-</script>
-
-  <title>jQuery DOM操作 | Zhyat Blog</title>
-  <meta name="generator" content="Hexo 3.8.0">
-  
-
-
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .logo,
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/favicon.ico" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+          
+        
+    
+    <!-- title -->
+    <title>jQuery DOM操作</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
-    <div class="headband"></div>
+<body class="max-width mx-auto px3 ltr">
+    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/10/15/关于Ajax的一些总结/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2017/09/19/less学习笔记/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/&text=jQuery DOM操作"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/&title=jQuery DOM操作"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/&is_video=false&description=jQuery DOM操作"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=jQuery DOM操作&body=Check out this article: http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/&title=jQuery DOM操作"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/&title=jQuery DOM操作"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/&title=jQuery DOM操作"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/&title=jQuery DOM操作"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/&name=jQuery DOM操作&description=&lt;blockquote&gt;
+&lt;p&gt;Write Less，Do More&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;从最基本DOM操作开始。&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/&t=jQuery DOM操作"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Zhyat Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
     </div>
-        <p class="site-subtitle">学而思之</p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery语句组成"><span class="toc-number">1.1.</span> <span class="toc-text">jQuery语句组成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM"><span class="toc-number">1.2.</span> <span class="toc-text">DOM</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择"><span class="toc-number">2.</span> <span class="toc-text">选择</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#选择器"><span class="toc-number">2.1.</span> <span class="toc-text">选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本选择器"><span class="toc-number">2.1.1.</span> <span class="toc-text">基本选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#层级选择器"><span class="toc-number">2.1.2.</span> <span class="toc-text">层级选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基本筛选器"><span class="toc-number">2.1.3.</span> <span class="toc-text">基本筛选器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#属性选择器"><span class="toc-number">2.1.4.</span> <span class="toc-text">属性选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#表单选择器"><span class="toc-number">2.1.5.</span> <span class="toc-text">表单选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#过滤选择器"><span class="toc-number">2.1.6.</span> <span class="toc-text">过滤选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查找选择器"><span class="toc-number">2.1.7.</span> <span class="toc-text">查找选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#以元素类型选择"><span class="toc-number">2.1.8.</span> <span class="toc-text">以元素类型选择</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子"><span class="toc-number">2.2.</span> <span class="toc-text">例子</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#以id和class选择"><span class="toc-number">2.2.1.</span> <span class="toc-text">以id和class选择</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缩写选择范围"><span class="toc-number">2.2.2.</span> <span class="toc-text">缩写选择范围</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用筛选器"><span class="toc-number">2.2.3.</span> <span class="toc-text">使用筛选器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修饰"><span class="toc-number">3.</span> <span class="toc-text">修饰</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#处理CSS"><span class="toc-number">3.1.</span> <span class="toc-text">处理CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#读取CSS"><span class="toc-number">3.1.1.</span> <span class="toc-text">读取CSS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置CSS"><span class="toc-number">3.1.2.</span> <span class="toc-text">设置CSS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#移除CSS类"><span class="toc-number">3.1.3.</span> <span class="toc-text">移除CSS类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加CSS类"><span class="toc-number">3.1.4.</span> <span class="toc-text">添加CSS类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#切换类"><span class="toc-number">3.1.5.</span> <span class="toc-text">切换类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子-1"><span class="toc-number">3.2.</span> <span class="toc-text">例子</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#逐条设置CSS"><span class="toc-number">3.2.1.</span> <span class="toc-text">逐条设置CSS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用对象字面量（object-literal）来设置多个属性"><span class="toc-number">3.2.2.</span> <span class="toc-text">使用对象字面量（object literal）来设置多个属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加和删除类"><span class="toc-number">3.2.3.</span> <span class="toc-text">添加和删除类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#增强"><span class="toc-number">4.</span> <span class="toc-text">增强</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事件"><span class="toc-number">4.1.</span> <span class="toc-text">事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#事件处理器"><span class="toc-number">4.1.1.</span> <span class="toc-text">事件处理器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#显示、隐藏和切换元素"><span class="toc-number">4.1.2.</span> <span class="toc-text">显示、隐藏和切换元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加和删除元素"><span class="toc-number">4.1.3.</span> <span class="toc-text">添加和删除元素</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子-2"><span class="toc-number">4.2.</span> <span class="toc-text">例子</span></a></li></ol></li></ol>
+    </div>
+  </span>
 </div>
 
-
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-      
-      
-      
+    
+    <div class="content index py4">
         
-        <li class="menu-item menu-item-home">
-      
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
     
+    <h1 class="posttitle" itemprop="name headline">
+        jQuery DOM操作
+    </h1>
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
 
-  </li>
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">Zhyat Blog</span>
+      </span>
       
+    <div class="postdate">
       
-      
+        <time datetime="2017-09-24T16:00:00.000Z" itemprop="datePublished">2017-09-25</time>
         
-        <li class="menu-item menu-item-tags">
       
-    
+    </div>
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
 
-  </li>
       
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/前端/">前端</a> › <a class="category-link" href="/categories/前端/jQuery/">jQuery</a>
+    </div>
+
+
       
-      
-        
-        <li class="menu-item menu-item-categories">
-      
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-archives">
-      
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
-
-  </li>
-  </ul>
-
-    
-
-</nav>
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/学习笔记/">学习笔记</a>
+    </div>
 
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-      <article itemscope="" itemtype="http://schema.org/Article">
+    </div>
+  </header>
   
-  
-  
-  <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhyat">
-      <meta itemprop="description" content="此时，此地，此身">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhyat Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">jQuery DOM操作
-
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2017-09-25 00:00:00" itemprop="dateCreated datePublished" datetime="2017-09-25T00:00:00+08:00">2017-09-25</time>
-            </span>
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/前端/jQuery/" itemprop="url" rel="index"><span itemprop="name">jQuery</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <blockquote>
+  <div class="content" itemprop="articleBody">
+    <blockquote>
 <p>Write Less，Do More</p>
 </blockquote>
 <p>从最基本DOM操作开始。</p>
@@ -460,299 +327,116 @@
 <hr>
 <p>参考资料：《jQuery从菜鸟到忍者》</p>
 
-    </div>
-
-    
-    
-    
-        
-      
-
-      <footer class="post-footer">
-          
-            
-          
-          <div class="post-tags">
-            
-              <a href="/tags/学习笔记/" rel="tag"># 学习笔记</a>
-            
-          </div>
-        
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-              
-                <a href="/2017/09/19/less学习笔记/" rel="next" title="Less快速入门">
-                  <i class="fa fa-chevron-left"></i> Less快速入门
-                </a>
-              
-            </div>
-
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2017/10/15/关于Ajax的一些总结/" rel="prev" title="AJAX简述">
-                  AJAX简述 <i class="fa fa-chevron-right"></i>
-                </a>
-              
-            </div>
-          </div>
-        
-      </footer>
-    
   </div>
-  
-  
-  
-  </article>
-
-  </div>
+</article>
 
 
-          </div>
-          
 
-        </div>
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
         
-        
-        
-        
-      
+          <div id="footer-post-container">
+  <div id="footer-post">
 
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+        
       </ul>
+    </div>
 
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery语句组成"><span class="nav-number">1.1.</span> <span class="nav-text">jQuery语句组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM"><span class="nav-number">1.2.</span> <span class="nav-text">DOM</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择"><span class="nav-number">2.</span> <span class="nav-text">选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#选择器"><span class="nav-number">2.1.</span> <span class="nav-text">选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本选择器"><span class="nav-number">2.1.1.</span> <span class="nav-text">基本选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#层级选择器"><span class="nav-number">2.1.2.</span> <span class="nav-text">层级选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本筛选器"><span class="nav-number">2.1.3.</span> <span class="nav-text">基本筛选器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性选择器"><span class="nav-number">2.1.4.</span> <span class="nav-text">属性选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表单选择器"><span class="nav-number">2.1.5.</span> <span class="nav-text">表单选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤选择器"><span class="nav-number">2.1.6.</span> <span class="nav-text">过滤选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查找选择器"><span class="nav-number">2.1.7.</span> <span class="nav-text">查找选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以元素类型选择"><span class="nav-number">2.1.8.</span> <span class="nav-text">以元素类型选择</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例子"><span class="nav-number">2.2.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#以id和class选择"><span class="nav-number">2.2.1.</span> <span class="nav-text">以id和class选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缩写选择范围"><span class="nav-number">2.2.2.</span> <span class="nav-text">缩写选择范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用筛选器"><span class="nav-number">2.2.3.</span> <span class="nav-text">使用筛选器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修饰"><span class="nav-number">3.</span> <span class="nav-text">修饰</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#处理CSS"><span class="nav-number">3.1.</span> <span class="nav-text">处理CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#读取CSS"><span class="nav-number">3.1.1.</span> <span class="nav-text">读取CSS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置CSS"><span class="nav-number">3.1.2.</span> <span class="nav-text">设置CSS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移除CSS类"><span class="nav-number">3.1.3.</span> <span class="nav-text">移除CSS类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加CSS类"><span class="nav-number">3.1.4.</span> <span class="nav-text">添加CSS类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切换类"><span class="nav-number">3.1.5.</span> <span class="nav-text">切换类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例子-1"><span class="nav-number">3.2.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#逐条设置CSS"><span class="nav-number">3.2.1.</span> <span class="nav-text">逐条设置CSS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用对象字面量（object-literal）来设置多个属性"><span class="nav-number">3.2.2.</span> <span class="nav-text">使用对象字面量（object literal）来设置多个属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加和删除类"><span class="nav-number">3.2.3.</span> <span class="nav-text">添加和删除类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增强"><span class="nav-number">4.</span> <span class="nav-text">增强</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件"><span class="nav-number">4.1.</span> <span class="nav-text">事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#事件处理器"><span class="nav-number">4.1.1.</span> <span class="nav-text">事件处理器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#显示、隐藏和切换元素"><span class="nav-number">4.1.2.</span> <span class="nav-text">显示、隐藏和切换元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加和删除元素"><span class="nav-number">4.1.3.</span> <span class="nav-text">添加和删除元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例子-2"><span class="nav-number">4.2.</span> <span class="nav-text">例子</span></a></li></ol></li></ol></div>
-        
-      </div>
-      <!--/noindex-->
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery语句组成"><span class="toc-number">1.1.</span> <span class="toc-text">jQuery语句组成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM"><span class="toc-number">1.2.</span> <span class="toc-text">DOM</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择"><span class="toc-number">2.</span> <span class="toc-text">选择</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#选择器"><span class="toc-number">2.1.</span> <span class="toc-text">选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本选择器"><span class="toc-number">2.1.1.</span> <span class="toc-text">基本选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#层级选择器"><span class="toc-number">2.1.2.</span> <span class="toc-text">层级选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基本筛选器"><span class="toc-number">2.1.3.</span> <span class="toc-text">基本筛选器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#属性选择器"><span class="toc-number">2.1.4.</span> <span class="toc-text">属性选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#表单选择器"><span class="toc-number">2.1.5.</span> <span class="toc-text">表单选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#过滤选择器"><span class="toc-number">2.1.6.</span> <span class="toc-text">过滤选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查找选择器"><span class="toc-number">2.1.7.</span> <span class="toc-text">查找选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#以元素类型选择"><span class="toc-number">2.1.8.</span> <span class="toc-text">以元素类型选择</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子"><span class="toc-number">2.2.</span> <span class="toc-text">例子</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#以id和class选择"><span class="toc-number">2.2.1.</span> <span class="toc-text">以id和class选择</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缩写选择范围"><span class="toc-number">2.2.2.</span> <span class="toc-text">缩写选择范围</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用筛选器"><span class="toc-number">2.2.3.</span> <span class="toc-text">使用筛选器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修饰"><span class="toc-number">3.</span> <span class="toc-text">修饰</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#处理CSS"><span class="toc-number">3.1.</span> <span class="toc-text">处理CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#读取CSS"><span class="toc-number">3.1.1.</span> <span class="toc-text">读取CSS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置CSS"><span class="toc-number">3.1.2.</span> <span class="toc-text">设置CSS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#移除CSS类"><span class="toc-number">3.1.3.</span> <span class="toc-text">移除CSS类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加CSS类"><span class="toc-number">3.1.4.</span> <span class="toc-text">添加CSS类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#切换类"><span class="toc-number">3.1.5.</span> <span class="toc-text">切换类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子-1"><span class="toc-number">3.2.</span> <span class="toc-text">例子</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#逐条设置CSS"><span class="toc-number">3.2.1.</span> <span class="toc-text">逐条设置CSS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用对象字面量（object-literal）来设置多个属性"><span class="toc-number">3.2.2.</span> <span class="toc-text">使用对象字面量（object literal）来设置多个属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加和删除类"><span class="toc-number">3.2.3.</span> <span class="toc-text">添加和删除类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#增强"><span class="toc-number">4.</span> <span class="toc-text">增强</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事件"><span class="toc-number">4.1.</span> <span class="toc-text">事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#事件处理器"><span class="toc-number">4.1.1.</span> <span class="toc-text">事件处理器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#显示、隐藏和切换元素"><span class="toc-number">4.1.2.</span> <span class="toc-text">显示、隐藏和切换元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加和删除元素"><span class="toc-number">4.1.3.</span> <span class="toc-text">添加和删除元素</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子-2"><span class="toc-number">4.2.</span> <span class="toc-text">例子</span></a></li></ol></li></ol>
+    </div>
 
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">zhyat</p>
-  <div class="site-description" itemprop="description">此时，此地，此身</div>
-</div>
-  <nav class="site-state motion-element">
-      <div class="site-state-item site-state-posts">
-        
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">30</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-    
-      
-      
-      <div class="site-state-item site-state-categories">
-        
-          
-            <a href="/categories/">
-          
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">22</span>
-        <span class="site-state-item-name">categories</span>
-        </a>
-      </div>
-    
-      
-      
-      <div class="site-state-item site-state-tags">
-        
-          
-            <a href="/tags/">
-          
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">tags</span>
-        </a>
-      </div>
-    
-  </nav>
-  <div class="feed-link motion-element">
-    <a href="/atom.xml" rel="alternate">
-      <i class="fa fa-rss"></i>RSS
-    </a>
-  </div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://github.com/zhyat" title="GitHub &rarr; https://github.com/zhyat" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-    
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="mailto:zhyat@outlook.com" title="E-Mail &rarr; mailto:zhyat@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-    
-  </div>
-
-
-
-      </div>
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/&text=jQuery DOM操作"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/&title=jQuery DOM操作"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/&is_video=false&description=jQuery DOM操作"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=jQuery DOM操作&body=Check out this article: http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/&title=jQuery DOM操作"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/&title=jQuery DOM操作"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/&title=jQuery DOM操作"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/&title=jQuery DOM操作"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/&name=jQuery DOM操作&description=&lt;blockquote&gt;
+&lt;p&gt;Write Less，Do More&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;从最基本DOM操作开始。&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://blog.zhyat.cn/2017/09/25/jQuery系列DOM篇/&t=jQuery DOM操作"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
 
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
 
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
 
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">zhyat</span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.0</div>
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
   </div>
+</div>
 
-  
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 zhyat
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
 
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
-  <script src="/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
-<script src="/js/schemes/muse.js?v=7.4.0"></script>
-<script src="/js/next-boot.js?v=7.4.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -771,37 +455,6 @@
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
 
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>
