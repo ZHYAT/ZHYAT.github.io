@@ -1,11 +1,11 @@
 ---
 title: ECMScript 6 箭头函数
 date: 2017-11-28
-tags:
-  - 学习笔记
+tags: 
+  - FrontEnd
 categories: 
-  - 前端
-  - ECMScript 6
+  - JavaScript
+  - ECMAScript 6
 ---
 
 JavaScript 箭头函数是 ECMAScript 6 中引入的编写函数表达式的一种简便方法。

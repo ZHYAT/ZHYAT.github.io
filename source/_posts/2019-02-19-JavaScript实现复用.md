@@ -1,10 +1,7 @@
 ---
 title: JavaScript的“面向对象”
 date: 2019-02-19
-tags: 
-  - 学习笔记
 categories: 
-  - 前端
   - JavaScript
 ---
 

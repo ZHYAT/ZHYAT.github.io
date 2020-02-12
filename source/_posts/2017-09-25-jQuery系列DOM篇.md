@@ -3,9 +3,9 @@ title: jQuery DOM操作
 date: 2017-09-25
 updated: 2017-11-02
 tags:
-  - 学习笔记
+	- FrontEnd
 categories: 
-  - 前端
+  - JavaScript
   - jQuery
 ---
 

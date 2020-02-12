@@ -1,10 +1,8 @@
 ---
 title: Typescript 学习笔记—基本语法
 date: 2018-09-05
-tags:
-  - 笔记
 categories:
-  - 前端
+  - JavaScript
   - TypeScript
 ---
 

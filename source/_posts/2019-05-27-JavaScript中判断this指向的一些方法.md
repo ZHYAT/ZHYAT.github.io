@@ -1,8 +1,6 @@
 ---
 title: JavaScript 中判断 this 指向的一些方法
 date: 2019-05-27
-tags:
-  - 学习笔记
 categories:
   - JavaScript
 ---
