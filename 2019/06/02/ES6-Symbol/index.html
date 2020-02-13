@@ -8,16 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="基本概念Symbol 的用法其实很简单，就是创建一个独一无二的值。举个例子：1Symbol() == Symbol() // false  需要注意的是，不能使用 new 创建 Symbol ，因为 Symbol 是一个基本类型。 通常在使用 Symbol 的时候，会在其中加入标识符，例如： 1234567Symbol(&apos;foo&apos;) // Symbol(foo)Symbol(&apos;foo&apos;) == S">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ECMAScript 6 之 Symbol">
+<meta property="og:title" content="ES6 之 Symbol">
 <meta property="og:url" content="http://blog.zhyat.cn/2019/06/02/ES6-Symbol/index.html">
 <meta property="og:site_name" content="Zhyat Blog">
 <meta property="og:description" content="基本概念Symbol 的用法其实很简单，就是创建一个独一无二的值。举个例子：1Symbol() == Symbol() // false  需要注意的是，不能使用 new 创建 Symbol ，因为 Symbol 是一个基本类型。 通常在使用 Symbol 的时候，会在其中加入标识符，例如： 1234567Symbol(&apos;foo&apos;) // Symbol(foo)Symbol(&apos;foo&apos;) == S">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://blog.zhyat.cn/2019/06/02/ES6-Symbol/Symbol_not_equal.png">
 <meta property="og:image" content="http://blog.zhyat.cn/2019/06/02/ES6-Symbol/Symbol_exp1.png">
-<meta property="og:updated_time" content="2020-02-12T06:53:47.598Z">
+<meta property="og:updated_time" content="2020-02-13T09:52:53.321Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ECMAScript 6 之 Symbol">
+<meta name="twitter:title" content="ES6 之 Symbol">
 <meta name="twitter:description" content="基本概念Symbol 的用法其实很简单，就是创建一个独一无二的值。举个例子：1Symbol() == Symbol() // false  需要注意的是，不能使用 new 创建 Symbol ，因为 Symbol 是一个基本类型。 通常在使用 Symbol 的时候，会在其中加入标识符，例如： 1234567Symbol(&apos;foo&apos;) // Symbol(foo)Symbol(&apos;foo&apos;) == S">
 <meta name="twitter:image" content="http://blog.zhyat.cn/2019/06/02/ES6-Symbol/Symbol_not_equal.png">
     
@@ -39,7 +39,7 @@
         
     
     <!-- title -->
-    <title>ECMAScript 6 之 Symbol</title>
+    <title>ES6 之 Symbol</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -92,16 +92,16 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&text=ECMAScript 6 之 Symbol"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&title=ECMAScript 6 之 Symbol"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&is_video=false&description=ECMAScript 6 之 Symbol"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=ECMAScript 6 之 Symbol&body=Check out this article: http://blog.zhyat.cn/2019/06/02/ES6-Symbol/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&title=ECMAScript 6 之 Symbol"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&title=ECMAScript 6 之 Symbol"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&title=ECMAScript 6 之 Symbol"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&title=ECMAScript 6 之 Symbol"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&name=ECMAScript 6 之 Symbol&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&t=ECMAScript 6 之 Symbol"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&text=ES6 之 Symbol"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&title=ES6 之 Symbol"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&is_video=false&description=ES6 之 Symbol"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ES6 之 Symbol&body=Check out this article: http://blog.zhyat.cn/2019/06/02/ES6-Symbol/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&title=ES6 之 Symbol"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&title=ES6 之 Symbol"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&title=ES6 之 Symbol"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&title=ES6 之 Symbol"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&name=ES6 之 Symbol&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&t=ES6 之 Symbol"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -118,7 +118,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        ECMAScript 6 之 Symbol
+        ES6 之 Symbol
     </h1>
 
 
@@ -194,16 +194,16 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&text=ECMAScript 6 之 Symbol"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&title=ECMAScript 6 之 Symbol"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&is_video=false&description=ECMAScript 6 之 Symbol"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=ECMAScript 6 之 Symbol&body=Check out this article: http://blog.zhyat.cn/2019/06/02/ES6-Symbol/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&title=ECMAScript 6 之 Symbol"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&title=ECMAScript 6 之 Symbol"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&title=ECMAScript 6 之 Symbol"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&title=ECMAScript 6 之 Symbol"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&name=ECMAScript 6 之 Symbol&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&t=ECMAScript 6 之 Symbol"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&text=ES6 之 Symbol"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&title=ES6 之 Symbol"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&is_video=false&description=ES6 之 Symbol"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ES6 之 Symbol&body=Check out this article: http://blog.zhyat.cn/2019/06/02/ES6-Symbol/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&title=ES6 之 Symbol"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&title=ES6 之 Symbol"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&title=ES6 之 Symbol"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&title=ES6 之 Symbol"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&name=ES6 之 Symbol&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://blog.zhyat.cn/2019/06/02/ES6-Symbol/&t=ES6 之 Symbol"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

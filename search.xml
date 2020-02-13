@@ -42,7 +42,7 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[ECMAScript 6 之 Symbol]]></title>
+    <title><![CDATA[ES6 之 Symbol]]></title>
     <url>%2F2019%2F06%2F02%2FES6-Symbol%2F</url>
     <content type="text"><![CDATA[基本概念Symbol 的用法其实很简单，就是创建一个独一无二的值。举个例子：1Symbol() == Symbol() // false 需要注意的是，不能使用 new 创建 Symbol ，因为 Symbol 是一个基本类型。 通常在使用 Symbol 的时候，会在其中加入标识符，例如： 1234567Symbol('foo') // Symbol(foo)Symbol('foo') == Symbol('foo') // falseSymbol('foo').toString() // "Symbol(foo)"Symbol('foo').toString() === Symbol('foo').toString() // true Symbol 有 toString() 方法 主要使用场景作为对象的属性名1234let o = &#123;&#125;let mySymbol = Symbol()o[mySymbol] = 'xxx' 需要注意的是，使用 Symbol 作为属性名时，要用 [] 的方式访问，因为点符号后面跟的只能时字符串。 定义常量保证这些常量不相等12345678let log = &#123;&#125;log.levels = &#123; DEBUG: Symbol('debug'), INFO: Symbol('info'), WARN: Symbol('warn')&#125;;console.log(log.levels.DEBUG, 'debug message')console.log(log.levels.INFO, 'info message') 保证 Switch 按照设计使用12345678910111213const COLOR_RED = Symbol();const COLOR_GREEN = Symbol();function getComplement(color) &#123; switch (color) &#123; case COLOR_RED: return COLOR_GREEN; case COLOR_GREEN: return COLOR_RED; default: throw new Error('Undefined color'); &#125;&#125; 其他Symbol 还有一些其他方法，请参阅读MDN Web Docs 不过需要特别注意的是，Symbol 定义的属性名，在使用 for...in 、for...of 等需要有迭代器的方法时不会出现，要获得一个对象所有的Symbol 属性名可以使用 Object.getOwnPropertySymbols() 方法。]]></content>
       <categories>
@@ -188,7 +188,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[ECMScript 6 箭头函数]]></title>
+    <title><![CDATA[ES6 之 箭头函数]]></title>
     <url>%2F2017%2F11%2F28%2FECMAScript%206%20%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%2F</url>
     <content type="text"><![CDATA[JavaScript 箭头函数是 ECMAScript 6 中引入的编写函数表达式的一种简便方法。 在 JavaScript 中创建一个函数通常有两种方式： 函数语句 函数表达式 但现在还可以使用箭头函数 用函数语句创建一个函数如下： 1234function add(num1,mum2)&#123; var res = num1 + num2; return res;&#125; 但现在用函数表达式只需要一行： 1var add = (num1,num2) =&gt; &#123;return num1 + num2;&#125;; 基本语法规则多参数传递多个参数应该在小括号中传递，如下所示： 1var add = (num1,num2,num3) =&gt; &#123;return num1 + num2 + num3;&#125;; 只传递一个函数的时候，小括号可以省略，如下所示： 1var mul = num =&gt; &#123;return num * 666;&#125;; 不传递参数的时候，小括号不可以省略，如下所示： 1var text = () =&gt; &#123;console.log("hello word")&#125;; 函数主体括号可选 return 语句可选 默认参数箭头函数支持 ES6 的默认参数功能，如下： 1var add = (num1=1,num2=2) =&gt; num1 + num2; 返回对象字面量如果要使用箭头函数返回对象字面量，需要把返回对象装入小括号中，如下： 1234var student = (name,age) =&gt;(&#123; name:name, age:age&#125;); this值箭头函数不会创建自己的this,它使用封闭上下文的this值。 123456789function Person()&#123; this.age = 0; setInterval(() =&gt; &#123; this.age++; // |this| properly refers to the person object &#125;, 1000);&#125;var p = new Person(); 所以在这段代码中，传递给setInterval的函数内的this与封闭函数中的this值相同 使用箭头函数的注意事项不能使用箭头函数作为构造函数，如下；12var Student = (name, age) =&gt; &#123; name = name, age = age &#125;;var jack = new Student("Jack", 6); 箭头函数没有原型12var Student = (name, age) =&gt; &#123; name = name, age = age &#125;;console.log(Student.prototype)]]></content>
       <categories>
