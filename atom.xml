@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhyat.cn/"/>
-  <updated>2020-02-12T07:00:00.673Z</updated>
+  <updated>2020-02-13T08:34:50.316Z</updated>
   <id>http://blog.zhyat.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常见的改善前端代码的设计模式-策略模式</title>
+    <link href="http://blog.zhyat.cn/2020/02/13/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://blog.zhyat.cn/2020/02/13/设计模式之策略模式/</id>
+    <published>2020-02-12T16:00:00.000Z</published>
+    <updated>2020-02-13T08:34:50.316Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>定义：定义一系列的算法, 把它们一个个封装起来, 并且使它们可以相互替换。<br>使用场景：达到某个目的，有不同的方法。例如表单校验。<br>关键：环境类（context)接受某一请求，随后把某一请求委托给一策略类，context需要维持对某一策略对象的引用。<br>名词解释：环境类：接受客户请求的类；策略类：实现具体算法的类</p><h3 id="模仿面向对象语言的代码实现"><a href="#模仿面向对象语言的代码实现" class="headerlink" title="模仿面向对象语言的代码实现"></a>模仿面向对象语言的代码实现</h3><p><em>jscode</em><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 策略类</span></span><br><span class="line"><span class="keyword">var</span> muneA = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">muneA.prototype.calculate = <span class="function"><span class="keyword">function</span> (<span class="params">count</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> count * <span class="number">100</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> muneB = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">muneB.prototype.calculate = <span class="function"><span class="keyword">function</span> (<span class="params">count</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> count * <span class="number">1000</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> muneC = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">muneC.prototype.calculate = <span class="function"><span class="keyword">function</span> (<span class="params">count</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> count * <span class="number">500</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 环境类</span></span><br><span class="line"><span class="keyword">var</span> Checkstand = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.count = <span class="literal">null</span></span><br><span class="line"><span class="keyword">this</span>.strategy = nul;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Checkstand.prototype.setCount = <span class="function"><span class="keyword">function</span> (<span class="params">count</span>) </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.count = count</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Checkstand.prototype.setStrategy = <span class="function"><span class="keyword">function</span> (<span class="params">strategy</span>) </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.strategy = strategy</span><br><span class="line">&#125;</span><br><span class="line">Checkstand.prototype.getDealMoney = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">this</span>.strategy.calculate(<span class="keyword">this</span>.strategy)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用</span></span><br><span class="line"><span class="keyword">var</span> checkstand = <span class="keyword">new</span> Checkstand()</span><br><span class="line">checkstand.setStrategy(<span class="keyword">new</span> muneA()) <span class="comment">// 设置策略对象</span></span><br><span class="line">checkstand.setCount(<span class="number">10</span>)  <span class="comment">// 设置数量</span></span><br></pre></td></tr></table></figure></p><h3 id="根据js语言特性的代码实现"><a href="#根据js语言特性的代码实现" class="headerlink" title="根据js语言特性的代码实现"></a>根据js语言特性的代码实现</h3><p><em>jscode</em><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> strategy = &#123;</span><br><span class="line"><span class="string">"muneA"</span>: <span class="function"><span class="keyword">function</span> (<span class="params">count</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> count * <span class="number">100</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="string">"muneB"</span>: <span class="function"><span class="keyword">function</span> (<span class="params">count</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> count * <span class="number">1000</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="string">"muneC"</span>: <span class="function"><span class="keyword">function</span> (<span class="params">count</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> count * <span class="number">500</span></span><br><span class="line">&#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="keyword">var</span> calculateDelaMoney = <span class="function"><span class="keyword">function</span> (<span class="params">menuType, count</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> strategy[menuType](count)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot; class=&quot;headerlink&quot; title=&quot;基本概念&quot;&gt;&lt;/a&gt;基本概念&lt;/h3&gt;&lt;p&gt;定义：定义一系列的算法, 把它们一个个封装起来, 并且使它们可以相互替换。&lt;br&gt;使用场景：达到某个目的，有不同的方法。例如
+      
+    
+    </summary>
+    
+      <category term="设计模式｜Design Pattern" scheme="http://blog.zhyat.cn/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BD%9CDesign-Pattern/"/>
+    
+    
+      <category term="FrontEnd" scheme="http://blog.zhyat.cn/tags/FrontEnd/"/>
+    
+  </entry>
   
   <entry>
     <title>微信小程序路由栈不能超过 10 的解决方案</title>
@@ -463,29 +488,6 @@
     
     
       <category term="FrontEnd" scheme="http://blog.zhyat.cn/tags/FrontEnd/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何看懂铁路图（语法图）</title>
-    <link href="http://blog.zhyat.cn/2017/10/28/%E7%9C%8B%E6%87%82%E9%93%81%E8%B7%AF%E5%9B%BE(%E8%AF%AD%E6%B3%95%E5%9B%BE)/"/>
-    <id>http://blog.zhyat.cn/2017/10/28/看懂铁路图(语法图)/</id>
-    <published>2017-10-28T00:29:00.000Z</published>
-    <updated>2020-02-12T06:25:33.890Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>语法图（Syntax diagrams ）又叫铁路图（railroad diagrams）是描述形式文法的一种方式。它是巴科斯范式或扩展巴科斯范式的图形化表示。最早使用语法图的书包括Niklaus Wirth写的“Pascal User Manual”（语法图开始于47页）和the Burroughs CANDE manual。在编译领域，像BNF和它的变体这样的文字式表示法都是首选的。BNF能很好的被编译器作者和编译器理解，但是不能很好的被这些语言的大部分用户理解。铁路图能更容易被大多数人理解。数据交换格式JSON之所以流行的部分原因就是它用铁路图来表示。 </p><p>–《维基百科》</p></blockquote><a id="more"></a><h2 id="准则"><a href="#准则" class="headerlink" title="准则"></a>准则</h2><blockquote><ol><li>从左边界开始沿着轨道去到右边界。</li><li>沿途，你将在圆框中遇到的是字面量，在方块中遇到的是规则或者描述。</li><li>任何沿着轨道能走通的序列都是合法的。</li><li>任何不能沿着轨道走通的序列都是非法的。</li><li>每个末端只有一个竖条的铁路图允许在任何一对标记中间插入空白。而在末端有两个竖条的铁路图是不允许的。</li></ol></blockquote><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>以《JavaScript语言精粹》第10页的铁路图为例：</p><p><img src="//blog.zhyat.cn/2017/10/28/看懂铁路图(语法图)/2017-11-05_statements.jpg" alt="语句铁路图"></p><p>一条JavaScript语句可以是：</p><ol><li><code>var name = expression;</code></li><li><code>var name1,name2,name3...,name;</code></li><li><code>var name 1,name2,...name3=expression3,...,name=expression;</code></li><li><code>var name 1,name2,...name3=expression3,...,name;</code></li><li><code>var name1=expression1,name2=expression2,name3=expression3...,name=expression;</code></li></ol><hr><p>参考资料</p><p><a href="https://en.wikipedia.org/wiki/Syntax_diagram" target="_blank" rel="noopener">wikipedia Syntax diagram</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;语法图（Syntax diagrams ）又叫铁路图（railroad diagrams）是描述形式文法的一种方式。它是巴科斯范式或扩展巴科斯范式的图形化表示。最早使用语法图的书包括Niklaus Wirth写的“Pascal User Manual”（语法图开始于47页）和the Burroughs CANDE manual。在编译领域，像BNF和它的变体这样的文字式表示法都是首选的。BNF能很好的被编译器作者和编译器理解，但是不能很好的被这些语言的大部分用户理解。铁路图能更容易被大多数人理解。数据交换格式JSON之所以流行的部分原因就是它用铁路图来表示。 &lt;/p&gt;
-&lt;p&gt;–《维基百科》&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="编译原理｜Compilation Principle" scheme="http://blog.zhyat.cn/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BD%9CCompilation-Principle/"/>
-    
     
   </entry>
   
