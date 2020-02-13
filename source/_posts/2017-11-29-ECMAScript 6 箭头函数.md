@@ -1,5 +1,5 @@
 ---
-title: ECMScript 6 箭头函数
+title: ES6 之 箭头函数
 date: 2017-11-28
 tags: 
   - FrontEnd
