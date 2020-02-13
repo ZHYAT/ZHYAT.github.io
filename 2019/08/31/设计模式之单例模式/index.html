@@ -6,17 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="基本概念定义：保证一个类仅有一个实例,并提供一个访问它的全局访问点。使用场景：全局缓存、Windows对象、登录浮窗等关键：用一个变量来标志是否已经为某个类创建对象，没有则创建，有则返回这个对象 标准单例模式代码实现：javascript code1234567891011121314151617/** * 标准单例模式 * 缺点是使用者必须知道这是个单例类，本来可以直接new xxx，现在变成了">
+    <meta name="description" content="前端相对于后端，对于设计模式的理解和主动使用是欠缺的，更多的时候是凭借着经验使用到了，却缺乏对此的理解和认知。 所谓设计模式，就是对一些代码的总结和归纳，使得建立良好的代码有迹可循，知道什么场景怎么去写，这样写有什么样的好处和弊端。 基本概念定义：保证一个类仅有一个实例,并提供一个访问它的全局访问点。使用场景：全局缓存、Windows对象、登录浮窗等关键：用一个变量来标志是否已经为某个类创建对象，">
+<meta name="keywords" content="FrontEnd">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式之单例模式">
+<meta property="og:title" content="常见的改善前端代码的设计模式-单例模式">
 <meta property="og:url" content="http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/index.html">
 <meta property="og:site_name" content="Zhyat Blog">
-<meta property="og:description" content="基本概念定义：保证一个类仅有一个实例,并提供一个访问它的全局访问点。使用场景：全局缓存、Windows对象、登录浮窗等关键：用一个变量来标志是否已经为某个类创建对象，没有则创建，有则返回这个对象 标准单例模式代码实现：javascript code1234567891011121314151617/** * 标准单例模式 * 缺点是使用者必须知道这是个单例类，本来可以直接new xxx，现在变成了">
+<meta property="og:description" content="前端相对于后端，对于设计模式的理解和主动使用是欠缺的，更多的时候是凭借着经验使用到了，却缺乏对此的理解和认知。 所谓设计模式，就是对一些代码的总结和归纳，使得建立良好的代码有迹可循，知道什么场景怎么去写，这样写有什么样的好处和弊端。 基本概念定义：保证一个类仅有一个实例,并提供一个访问它的全局访问点。使用场景：全局缓存、Windows对象、登录浮窗等关键：用一个变量来标志是否已经为某个类创建对象，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-12T06:18:00.189Z">
+<meta property="og:updated_time" content="2020-02-13T08:25:45.776Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式之单例模式">
-<meta name="twitter:description" content="基本概念定义：保证一个类仅有一个实例,并提供一个访问它的全局访问点。使用场景：全局缓存、Windows对象、登录浮窗等关键：用一个变量来标志是否已经为某个类创建对象，没有则创建，有则返回这个对象 标准单例模式代码实现：javascript code1234567891011121314151617/** * 标准单例模式 * 缺点是使用者必须知道这是个单例类，本来可以直接new xxx，现在变成了">
+<meta name="twitter:title" content="常见的改善前端代码的设计模式-单例模式">
+<meta name="twitter:description" content="前端相对于后端，对于设计模式的理解和主动使用是欠缺的，更多的时候是凭借着经验使用到了，却缺乏对此的理解和认知。 所谓设计模式，就是对一些代码的总结和归纳，使得建立良好的代码有迹可循，知道什么场景怎么去写，这样写有什么样的好处和弊端。 基本概念定义：保证一个类仅有一个实例,并提供一个访问它的全局访问点。使用场景：全局缓存、Windows对象、登录浮窗等关键：用一个变量来标志是否已经为某个类创建对象，">
     
     
         
@@ -36,7 +37,7 @@
         
     
     <!-- title -->
-    <title>设计模式之单例模式</title>
+    <title>常见的改善前端代码的设计模式-单例模式</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -89,16 +90,16 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&text=设计模式之单例模式"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&title=设计模式之单例模式"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&is_video=false&description=设计模式之单例模式"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=设计模式之单例模式&body=Check out this article: http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&title=设计模式之单例模式"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&title=设计模式之单例模式"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&title=设计模式之单例模式"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&title=设计模式之单例模式"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&name=设计模式之单例模式&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&t=设计模式之单例模式"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&text=常见的改善前端代码的设计模式-单例模式"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&title=常见的改善前端代码的设计模式-单例模式"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&is_video=false&description=常见的改善前端代码的设计模式-单例模式"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=常见的改善前端代码的设计模式-单例模式&body=Check out this article: http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&title=常见的改善前端代码的设计模式-单例模式"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&title=常见的改善前端代码的设计模式-单例模式"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&title=常见的改善前端代码的设计模式-单例模式"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&title=常见的改善前端代码的设计模式-单例模式"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&name=常见的改善前端代码的设计模式-单例模式&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&t=常见的改善前端代码的设计模式-单例模式"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -115,7 +116,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        设计模式之单例模式
+        常见的改善前端代码的设计模式-单例模式
     </h1>
 
 
@@ -141,13 +142,20 @@
 
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/FrontEnd/">FrontEnd</a>
+    </div>
+
 
     </div>
   </header>
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>定义：保证一个类仅有一个实例,并提供一个访问它的全局访问点。<br>使用场景：全局缓存、Windows对象、登录浮窗等<br>关键：用一个变量来标志是否已经为某个类创建对象，没有则创建，有则返回这个对象</p>
+    <p>前端相对于后端，对于设计模式的理解和主动使用是欠缺的，更多的时候是凭借着经验使用到了，却缺乏对此的理解和认知。</p>
+<p>所谓设计模式，就是对一些代码的总结和归纳，使得建立良好的代码有迹可循，知道什么场景怎么去写，这样写有什么样的好处和弊端。</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>定义：保证一个类仅有一个实例,并提供一个访问它的全局访问点。<br>使用场景：全局缓存、Windows对象、登录浮窗等<br>关键：用一个变量来标志是否已经为某个类创建对象，没有则创建，有则返回这个对象</p>
 <h2 id="标准单例模式"><a href="#标准单例模式" class="headerlink" title="标准单例模式"></a>标准单例模式</h2><p>代码实现：<br><em>javascript code</em><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 标准单例模式</span></span><br><span class="line"><span class="comment"> * 缺点是使用者必须知道这是个单例类，本来可以直接new xxx，现在变成了xxx.getInstance</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> Singleton = <span class="function"><span class="keyword">function</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.instance = <span class="literal">null</span></span><br><span class="line">&#125;;</span><br><span class="line">Singleton.prototype.getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line">Singleton.prototype.getInstance = <span class="function"><span class="keyword">function</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.instance!==<span class="literal">null</span>)&#123;</span><br><span class="line">    <span class="keyword">this</span>.instance = <span class="keyword">new</span> Singleton(name)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.instance</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="透明单例模式"><a href="#透明单例模式" class="headerlink" title="透明单例模式"></a>透明单例模式</h2><p><em>javascript code</em><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 利用闭包和IIFE实现了透明单例模式</span></span><br><span class="line"><span class="comment"> * 但违反了单一职责原则</span></span><br><span class="line"><span class="comment"> * 缺点是，当不再需要单例时，需要改写构造函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> CreateDiv = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> instance</span><br><span class="line">  <span class="keyword">var</span> CreateDiv = <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (instance) &#123;</span><br><span class="line">      <span class="keyword">return</span> instance</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.html = html</span><br><span class="line">    <span class="keyword">this</span>.init() <span class="comment">// 执行init方法</span></span><br><span class="line">    <span class="keyword">return</span> (instance = <span class="keyword">this</span>) <span class="comment">// 保证只有一个一个对象</span></span><br><span class="line">  &#125;</span><br><span class="line">  CreateDiv.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</span><br><span class="line">    div.innerHTML = <span class="keyword">this</span>.html</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(div)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> CreateDiv</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></p>
 <h2 id="用代理实现的单例"><a href="#用代理实现的单例" class="headerlink" title="用代理实现的单例"></a>用代理实现的单例</h2><p><em>javascript code</em><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 代理实现单例</span></span><br><span class="line"><span class="comment"> * 将负责管理单例的逻辑移到proxySingletonCreate</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> CreateSpan = <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.html = html</span><br><span class="line">  <span class="keyword">this</span>.init()</span><br><span class="line">&#125;</span><br><span class="line">CreateSpan.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> span = <span class="built_in">document</span>.createElement(<span class="string">'span'</span>)</span><br><span class="line">  span.innerHTML = <span class="keyword">this</span>.html</span><br><span class="line">  <span class="built_in">document</span>.body.appendChild(span)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> proxySingletonCreate = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> instance</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!instance) [(instance = <span class="keyword">new</span> CreateSpan(<span class="string">'test'</span>))]</span><br><span class="line">    <span class="keyword">return</span> instance</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></p>
@@ -184,16 +192,16 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&text=设计模式之单例模式"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&title=设计模式之单例模式"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&is_video=false&description=设计模式之单例模式"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=设计模式之单例模式&body=Check out this article: http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&title=设计模式之单例模式"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&title=设计模式之单例模式"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&title=设计模式之单例模式"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&title=设计模式之单例模式"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&name=设计模式之单例模式&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&t=设计模式之单例模式"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&text=常见的改善前端代码的设计模式-单例模式"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&title=常见的改善前端代码的设计模式-单例模式"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&is_video=false&description=常见的改善前端代码的设计模式-单例模式"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=常见的改善前端代码的设计模式-单例模式&body=Check out this article: http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&title=常见的改善前端代码的设计模式-单例模式"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&title=常见的改善前端代码的设计模式-单例模式"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&title=常见的改善前端代码的设计模式-单例模式"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&title=常见的改善前端代码的设计模式-单例模式"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&name=常见的改善前端代码的设计模式-单例模式&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://blog.zhyat.cn/2019/08/31/设计模式之单例模式/&t=常见的改善前端代码的设计模式-单例模式"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
