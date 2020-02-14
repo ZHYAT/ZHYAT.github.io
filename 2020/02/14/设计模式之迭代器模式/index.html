@@ -9,14 +9,14 @@
     <meta name="description" content="基本概念定义： 迭代器模式是指提供一种方法顺序访问一个聚合对象中的各个元素, 而又不需要暴露该对象的内部表示。迭代器模式可以把迭代的过程从业务逻辑中分离出来,在使用迭代器模式之后,即使不关心对象的内部构造,也可以按顺序访问其中的每个元素。 内部迭代器jscode12345678var each = function( ary, callback )&amp;#123;     for ( var i =">
 <meta name="keywords" content="FrontEnd">
 <meta property="og:type" content="article">
-<meta property="og:title" content="常见的改善前端代码的设计模式-策略模式">
+<meta property="og:title" content="常见的改善前端代码的设计模式-迭代器模式">
 <meta property="og:url" content="http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/index.html">
 <meta property="og:site_name" content="Zhyat Blog">
 <meta property="og:description" content="基本概念定义： 迭代器模式是指提供一种方法顺序访问一个聚合对象中的各个元素, 而又不需要暴露该对象的内部表示。迭代器模式可以把迭代的过程从业务逻辑中分离出来,在使用迭代器模式之后,即使不关心对象的内部构造,也可以按顺序访问其中的每个元素。 内部迭代器jscode12345678var each = function( ary, callback )&amp;#123;     for ( var i =">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-14T05:18:22.537Z">
+<meta property="og:updated_time" content="2020-02-14T05:19:58.494Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="常见的改善前端代码的设计模式-策略模式">
+<meta name="twitter:title" content="常见的改善前端代码的设计模式-迭代器模式">
 <meta name="twitter:description" content="基本概念定义： 迭代器模式是指提供一种方法顺序访问一个聚合对象中的各个元素, 而又不需要暴露该对象的内部表示。迭代器模式可以把迭代的过程从业务逻辑中分离出来,在使用迭代器模式之后,即使不关心对象的内部构造,也可以按顺序访问其中的每个元素。 内部迭代器jscode12345678var each = function( ary, callback )&amp;#123;     for ( var i =">
     
     
@@ -37,7 +37,7 @@
         
     
     <!-- title -->
-    <title>常见的改善前端代码的设计模式-策略模式</title>
+    <title>常见的改善前端代码的设计模式-迭代器模式</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -88,16 +88,16 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&text=常见的改善前端代码的设计模式-策略模式"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&title=常见的改善前端代码的设计模式-策略模式"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&is_video=false&description=常见的改善前端代码的设计模式-策略模式"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=常见的改善前端代码的设计模式-策略模式&body=Check out this article: http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&title=常见的改善前端代码的设计模式-策略模式"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&title=常见的改善前端代码的设计模式-策略模式"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&title=常见的改善前端代码的设计模式-策略模式"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&title=常见的改善前端代码的设计模式-策略模式"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&name=常见的改善前端代码的设计模式-策略模式&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&t=常见的改善前端代码的设计模式-策略模式"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&text=常见的改善前端代码的设计模式-迭代器模式"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&title=常见的改善前端代码的设计模式-迭代器模式"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&is_video=false&description=常见的改善前端代码的设计模式-迭代器模式"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=常见的改善前端代码的设计模式-迭代器模式&body=Check out this article: http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&title=常见的改善前端代码的设计模式-迭代器模式"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&title=常见的改善前端代码的设计模式-迭代器模式"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&title=常见的改善前端代码的设计模式-迭代器模式"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&title=常见的改善前端代码的设计模式-迭代器模式"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&name=常见的改善前端代码的设计模式-迭代器模式&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&t=常见的改善前端代码的设计模式-迭代器模式"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -114,7 +114,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        常见的改善前端代码的设计模式-策略模式
+        常见的改善前端代码的设计模式-迭代器模式
     </h1>
 
 
@@ -185,16 +185,16 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&text=常见的改善前端代码的设计模式-策略模式"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&title=常见的改善前端代码的设计模式-策略模式"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&is_video=false&description=常见的改善前端代码的设计模式-策略模式"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=常见的改善前端代码的设计模式-策略模式&body=Check out this article: http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&title=常见的改善前端代码的设计模式-策略模式"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&title=常见的改善前端代码的设计模式-策略模式"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&title=常见的改善前端代码的设计模式-策略模式"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&title=常见的改善前端代码的设计模式-策略模式"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&name=常见的改善前端代码的设计模式-策略模式&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&t=常见的改善前端代码的设计模式-策略模式"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&text=常见的改善前端代码的设计模式-迭代器模式"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&title=常见的改善前端代码的设计模式-迭代器模式"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&is_video=false&description=常见的改善前端代码的设计模式-迭代器模式"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=常见的改善前端代码的设计模式-迭代器模式&body=Check out this article: http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&title=常见的改善前端代码的设计模式-迭代器模式"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&title=常见的改善前端代码的设计模式-迭代器模式"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&title=常见的改善前端代码的设计模式-迭代器模式"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&title=常见的改善前端代码的设计模式-迭代器模式"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&name=常见的改善前端代码的设计模式-迭代器模式&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/&t=常见的改善前端代码的设计模式-迭代器模式"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
