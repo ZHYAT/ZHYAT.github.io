@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhyat.cn/"/>
-  <updated>2020-02-14T05:13:20.784Z</updated>
+  <updated>2020-02-14T05:18:22.537Z</updated>
   <id>http://blog.zhyat.cn/</id>
   
   <author>
@@ -17,27 +17,27 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>常见的改善前端代码的设计模式-策略模式</title>
     <link href="http://blog.zhyat.cn/2020/02/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/"/>
     <id>http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/</id>
     <published>2020-02-13T16:00:00.000Z</published>
-    <updated>2020-02-14T05:13:20.784Z</updated>
+    <updated>2020-02-14T05:18:22.537Z</updated>
     
-    <content type="html"><![CDATA[<hr><p>title: 常见的改善前端代码的设计模式-策略模式<br>tag:</p><ul><li>FrontEnd<br>categories: </li><li><h2 id="设计模式｜Design-Pattern"><a href="#设计模式｜Design-Pattern" class="headerlink" title="设计模式｜Design Pattern"></a>设计模式｜Design Pattern</h2></li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>定义： 迭代器模式是指提供一种方法顺序访问一个聚合对象中的各个元素, 而又不需要暴露该对象的内部表示。迭代器模式可以把迭代的过程从业务逻辑中分离出来,在使用迭代器模式之后,即使不关心对象的内部构造,也可以按顺序访问其中的每个元素。</p><h2 id="内部迭代器"><a href="#内部迭代器" class="headerlink" title="内部迭代器"></a>内部迭代器</h2><p><em>jscode</em><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> each = <span class="function"><span class="keyword">function</span>(<span class="params"> ary, callback </span>)</span>&#123;     </span><br><span class="line"><span class="keyword">for</span> ( <span class="keyword">var</span> i = <span class="number">0</span>, l = ary.length; i &lt; l; i++ )&#123;         </span><br><span class="line">callback.call( ary[i], i, ary[ i ] );  <span class="comment">// 把下标和元素当作参数传给 callback 函数     </span></span><br><span class="line">  &#125; &#125;</span><br><span class="line"></span><br><span class="line">each( [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> ], <span class="function"><span class="keyword">function</span>(<span class="params"> i, n </span>)</span>&#123;     </span><br><span class="line">alert ( [ i, n ] ); </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p><h2 id="外部迭代器"><a href="#外部迭代器" class="headerlink" title="外部迭代器"></a>外部迭代器</h2><p><em>jscode</em><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Iterator = <span class="function"><span class="keyword">function</span>(<span class="params"> obj </span>)</span>&#123;     </span><br><span class="line"><span class="keyword">var</span> current = <span class="number">0</span>;      </span><br><span class="line"><span class="keyword">var</span> next = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;         </span><br><span class="line">current += <span class="number">1</span>;     </span><br><span class="line">&#125;;      </span><br><span class="line"><span class="keyword">var</span> isDone = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;         </span><br><span class="line"><span class="keyword">return</span> current &gt;= obj.length;     </span><br><span class="line">&#125;;      </span><br><span class="line"><span class="keyword">var</span> getCurrItem = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;         </span><br><span class="line"><span class="keyword">return</span> obj[ current ];     </span><br><span class="line">&#125;;      </span><br><span class="line"><span class="keyword">return</span> &#123;         </span><br><span class="line">next: next,         </span><br><span class="line">isDone: isDone,         </span><br><span class="line">getCurrItem: getCurrItem     </span><br><span class="line">&#125; </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;hr&gt;
-&lt;p&gt;title: 常见的改善前端代码的设计模式-策略模式&lt;br&gt;tag:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;FrontEnd&lt;br&gt;categories: &lt;/li&gt;
-&lt;li&gt;&lt;h2 id=&quot;设计模式｜Design-Pattern&quot;&gt;&lt;a href=&quot;#设计模式｜Design
+        &lt;h2 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot; class=&quot;headerlink&quot; title=&quot;基本概念&quot;&gt;&lt;/a&gt;基本概念&lt;/h2&gt;&lt;p&gt;定义： 迭代器模式是指提供一种方法顺序访问一个聚合对象中的各个元素, 而又不需要暴露该对象的内部表示。迭代器模式可以把迭代的
       
     
     </summary>
     
+      <category term="设计模式｜Design Pattern" scheme="http://blog.zhyat.cn/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BD%9CDesign-Pattern/"/>
+    
+    
+      <category term="FrontEnd" scheme="http://blog.zhyat.cn/tags/FrontEnd/"/>
     
   </entry>
   
