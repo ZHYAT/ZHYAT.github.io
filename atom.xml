@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhyat.cn/"/>
-  <updated>2020-02-13T09:56:08.470Z</updated>
+  <updated>2020-02-14T05:13:20.784Z</updated>
   <id>http://blog.zhyat.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://blog.zhyat.cn/2020/02/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://blog.zhyat.cn/2020/02/14/设计模式之迭代器模式/</id>
+    <published>2020-02-13T16:00:00.000Z</published>
+    <updated>2020-02-14T05:13:20.784Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p>title: 常见的改善前端代码的设计模式-策略模式<br>tag:</p><ul><li>FrontEnd<br>categories: </li><li><h2 id="设计模式｜Design-Pattern"><a href="#设计模式｜Design-Pattern" class="headerlink" title="设计模式｜Design Pattern"></a>设计模式｜Design Pattern</h2></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;hr&gt;
+&lt;p&gt;title: 常见的改善前端代码的设计模式-策略模式&lt;br&gt;tag:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;FrontEnd&lt;br&gt;categories: &lt;/li&gt;
+&lt;li&gt;&lt;h2 id=&quot;设计模式｜Design-Pattern&quot;&gt;&lt;a href=&quot;#设计模式｜Design
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>常见的改善前端代码的设计模式-策略模式</title>
@@ -461,35 +486,6 @@
     
     
       <category term="三维可视化" scheme="http://blog.zhyat.cn/tags/%E4%B8%89%E7%BB%B4%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>FCC 高级算法题之验证美国电话号码（Validate US Telephone Numbers）</title>
-    <link href="http://blog.zhyat.cn/2017/11/30/FCC%20%E9%AB%98%E7%BA%A7%E7%AE%97%E6%B3%95%E9%A2%98%20-%20%E9%AA%8C%E8%AF%81%E7%BE%8E%E5%9B%BD%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81/"/>
-    <id>http://blog.zhyat.cn/2017/11/30/FCC 高级算法题 - 验证美国电话号码/</id>
-    <published>2017-11-29T16:00:00.000Z</published>
-    <updated>2020-02-12T06:52:14.081Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://freecodecamp.cn/challenges/validate-us-telephone-numbers" target="_blank" rel="noopener">题目描述</a></p><p>虽然这个题目是高级算法题，实际上是正则表达式的内容，先把正则表达式写出来。观察例子可以得出几个结论：</p><ul><li>电话号码为十位数字（不包括国家码，连接符）</li><li>国家码可以有也可以没有，有的时候只能为1</li><li>没有国家码时，如果电话号码没有连着写，则以334的形式分隔（如果有国家码，则以1334分组）</li><li>不包括国家码的第一组数字，可以用括号包围。</li><li><p>分隔符为空格或连接符，两者不能接连出现</p><a id="more"></a></li></ul><p>那么来逐一实现</p><p>第一步，实现十位数字连接出现和以334的形式出现</p><p>​    <code>\d{3}\d{3}\d{4}</code></p><p>第二步，实现国家码以1出现和不出现</p><p>​    <code>1?\d{3}\d{3}\d{4}</code></p><p>第三步，实现国家码之后可以有空格也可以无空格</p><p>​    <code>1? ?\d{3}\d{3}\d{4}</code></p><p><em>注意不要用 <code>/s</code>来匹配空格，因为<code>/s</code>匹配的是一个空白符，包括空格、制表符、换页符、换行符和其他 Unicode 空格</em></p><p>第四步，实现电话号码之间可以不分隔也可以用空格或连接符分隔</p><p>​    <code>1? ?\d{3}( |-)?\d{3}( |-)?\d{4}</code></p><p>第五步，实现第一组电话号码可以用括号包围，注意括号需要转义</p><p>​    <code>1? ?(\(\d{3}\)|\d{3})( |-)?\d{3}( |-)?\d{4}</code></p><p>第六步，为了保证匹配的是一串完整的号码，而不是某段数字的中间，匹配匹配输入开始和输入结束</p><p>​    <code>^1? ?(\(\d{3}\)|\d{3})( |-)?\d{3}( |-)?\d{4}$</code></p><p>正则表达式写完了，代码就很简单了</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">telephoneCheck</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="regexp">/^1?\s?(\(\d&#123;3&#125;\)|\d&#123;3&#125;)(\s|-)?\d&#123;3&#125;(\s|-)?\d&#123;4&#125;$/</span>.test(str);</span><br><span class="line">&#125;</span><br><span class="line">telephoneCheck(<span class="string">"555-555-5555"</span>);</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://freecodecamp.cn/challenges/validate-us-telephone-numbers&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;题目描述&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;虽然这个题目是高级算法题，实际上是正则表达式的内容，先把正则表达式写出来。观察例子可以得出几个结论：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;电话号码为十位数字（不包括国家码，连接符）&lt;/li&gt;
-&lt;li&gt;国家码可以有也可以没有，有的时候只能为1&lt;/li&gt;
-&lt;li&gt;没有国家码时，如果电话号码没有连着写，则以334的形式分隔（如果有国家码，则以1334分组）&lt;/li&gt;
-&lt;li&gt;不包括国家码的第一组数字，可以用括号包围。&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;分隔符为空格或连接符，两者不能接连出现&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="数据结构与算法｜Algorithm" scheme="http://blog.zhyat.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BD%9CAlgorithm/"/>
-    
-    
-      <category term="FreeCodeCamp" scheme="http://blog.zhyat.cn/tags/FreeCodeCamp/"/>
     
   </entry>
   
