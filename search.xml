@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[2020-02-24-leetcode题解目录]]></title>
+    <url>%2F2020%2F02%2F24%2Fleetcode%E9%A2%98%E8%A7%A3%E7%9B%AE%E5%BD%95%2F</url>
+    <content type="text"><![CDATA[LeetCode 练习感谢 LeetCode CN 感谢 VsCode 中 LeetCode 插件的作者 Id Title Tags Difficulty Language 1 two-sum/两数之和 array/hash-table Easy js 4 find-median-sorted-arrays/寻找两个有序数组的中位数 array/binary-search/divide-and-conquer Hard js 7 reverse-integer/整数反转 math Easy js 9 palindrome-number/回文数 math Easy js 13 roman-to-integer/罗马数字转整数 math/string Easy js 14 longest-common-prefix/最长公共前缀 string Easy js 19 remove-nth-node-from-end-of-list/删除链表的倒数第N个节点 linked-list/two-pointers Medium python 20 valid-parentheses/有效的括号 string/stack Easy js/python 21 merge-two-sorted-lists/合并两个有序链表 linked-list Easy js/python 27 remove-element/移除元素 array/two-pointers Easy js 28 implement-strstr/实现strStr() string/two-pointers Easy js 35 search-insert-position/搜索插入位置 array/binary-search/ Easy js 38 count-and-say/报数 string Easy js 53 maximum-subarray/最大子序和 array/divide-and-conquer/dynamic-programming Easy js 58 length-of-last-word/最后一个单词的长度 string Easy js 66 plus-one/加一 array Easy js 67 add-binary/二进制求和 math/string Easy js 69 sqrtx/x 的平方根 math/binary-search Easy js 70 climbing-stairs/爬楼梯 dynamic-programming Easy js 83 remove-duplicates-from-sorted-list/删除排序链表中的重复元素 linked-list Easy js 88 merge-sorted-array/合并两个有序数组 array/two-pointers Easy js 100 same-tree/相同的树 tree/depth-first-search Easy js 101 symmetric-tree/对称二叉树 tree/depth-first-search/breadth-first-search Easy js 104 maximum-depth-of-binary-tree/二叉树的最大深度 tree/depth-first-search Easy js 141 inked-list-cycle/环形链表 linked-list/two-pointers Easy python 155 min-stack/最小栈 stack/design Easy python 206 reverse-linked-list/反转链表 linked-list Easy python 232 implement-queue-using-stacks/用栈实现队列 stack/design Easy python 844 backspace-string-compare/比较含退格的字符串 Easy python 876 middle-of-the-linked-list/链表的中间结点 ordered-map Easy python]]></content>
+      <categories>
+        <category>数据结构与算法｜Algorithm</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[常见的改善前端代码的设计模式-迭代器模式]]></title>
     <url>%2F2020%2F02%2F14%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F%2F</url>
     <content type="text"><![CDATA[基本概念定义： 迭代器模式是指提供一种方法顺序访问一个聚合对象中的各个元素, 而又不需要暴露该对象的内部表示。迭代器模式可以把迭代的过程从业务逻辑中分离出来,在使用迭代器模式之后,即使不关心对象的内部构造,也可以按顺序访问其中的每个元素。 内部迭代器jscode12345678var each = function( ary, callback )&#123; for ( var i = 0, l = ary.length; i &lt; l; i++ )&#123; callback.call( ary[i], i, ary[ i ] ); // 把下标和元素当作参数传给 callback 函数 &#125; &#125;each( [ 1, 2, 3 ], function( i, n )&#123; alert ( [ i, n ] ); &#125;) 外部迭代器jscode1234567891011121314151617var Iterator = function( obj )&#123; var current = 0; var next = function()&#123; current += 1; &#125;; var isDone = function()&#123; return current &gt;= obj.length; &#125;; var getCurrItem = function()&#123; return obj[ current ]; &#125;; return &#123; next: next, isDone: isDone, getCurrItem: getCurrItem &#125; &#125;;]]></content>
